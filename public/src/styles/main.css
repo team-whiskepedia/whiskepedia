@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Anton|Bai+Jamjuree|Fredericka+the+Great|Gabriela|Julius+Sans+One|Lily+Script+One|Sarala|Signika+Negative|Tulpen+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Monsieur+La+Doulaise&display=swap');
+
+body {
+    background-color: #DDD5D0;
+    background-image: url('../../assets/whiskey-wall.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.dark {
+    background-color: #0F0D00;
+    width: 100 vw;
+    padding: 10px;
+    margin: auto;
+}
+
+.one {
+    font-family: 'Monsieur La Doulaise', cursive;
+    font-size: 4em;
+    
+}
+
+
+.two {
+    letter-spacing: 3px;
+    font-size: 5em;
+    font-family: 'Tulpen One', cursive;
+    color: #A0A0A0;
+    text-align: center;
+}
+
+
