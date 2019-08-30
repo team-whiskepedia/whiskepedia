@@ -15,8 +15,8 @@ The overall problem domain and how the project solves those problems
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
 Clone the repository from GitHub: https://github.com/team-whiskepedia/whiskepedia
 Run ```npm i```
-Run ```npm -D```
-Create a local postgres database with the name 'whiskepedia', and link to it in your .env file
+Run ```npm i -D```
+Create a local postgres database with the name 'whiskepedia', and link to it in your .env file (DATABASE_URL= postgres://localhost:5432/whiskepedia)
 
 A list of any libraries, frameworks, or packages that your application requires in order to properly function
 
