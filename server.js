@@ -47,6 +47,8 @@ app.use('/api/auth', authRoutes);
 
 
 
+
+
 // Start the server
 app.listen(PORT, () => {
     console.log('server running on PORT', PORT);
