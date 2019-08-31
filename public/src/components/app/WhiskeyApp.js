@@ -1,4 +1,4 @@
-import Component from './Component.js';
+import Component from '../Component.js';
 import Header from './Header.js';
 import WhiskeyList from '../whiskeys/WhiskeyList.js';
 import { getWhiskeys } from '../../services/whiskey-api.js';
