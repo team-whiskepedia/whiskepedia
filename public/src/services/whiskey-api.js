@@ -2,12 +2,12 @@ const URL = '/api';
 
 function fetchWithError(url, options) {
     return fetch(url, options)
-        .then(respons => {
-            if(Response.ok) {
-                return Response.json();
+        .then(response => {
+            if(response.ok) {
+                return response.json();
             }
             else {
-                return Response.json().then(json => {
+                return response.json().then(json => {
                     throw json.error;
                 });
             }
