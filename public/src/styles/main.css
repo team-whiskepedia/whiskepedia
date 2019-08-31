@@ -1,6 +1,83 @@
 @import url('https://fonts.googleapis.com/css?family=Anton|Bai+Jamjuree|Fredericka+the+Great|Gabriela|Julius+Sans+One|Lily+Script+One|Sarala|Signika+Negative|Tulpen+One&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Monsieur+La+Doulaise&display=swap');
 
+.header {
+    display: flex;
+    height: 10vh;
+    margin: 0px;
+}
+.dark {
+    background-color: #0F0D00;
+    padding: 10px;
+    margin: auto;
+}
+
+/* .one {
+    font-family: 'Monsieur La Doulaise', cursive;
+    font-size: 4em;
+} */
+
+.logo-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+.logo-container img {
+    height: 90%;
+    border-radius: 50%;
+    opacity: .9;
+    margin-left: 1%;
+}
+.logo {
+    padding-top: 1%;
+    margin-left: 2%;
+    letter-spacing: 3px;
+    font-size: calc(3em + 2vw);
+    font-family: 'Tulpen One', cursive;
+    color: #A0A0A0;
+    text-align: center;
+    text-decoration: none;
+}
+
+.mobile-nav {
+    display: flex;
+    align-items: center;
+}
+.mobile-nav i {
+    color: #A0A0A0;
+    position: relative;
+}
+.mobile-nav ul {
+    position: absolute;
+    left: 0;
+    list-style: none;
+    padding: 10px;
+}
+
+.desktop-nav {
+    display: flex;
+    flex-direction: column-reverse;
+}
+.desktop-nav ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 0;
+}
+.desktop-nav li {
+    margin: 10px;
+}
+.desktop-nav div {
+    text-align: center;
+}
+.desktop-nav div a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: #DDD5D0;
+}
 body {
     background-color: #DDD5D0;
     background-image: url('../../assets/whiskey-wall.png');
@@ -8,26 +85,32 @@ body {
     background-size: cover;
 }
 
-.dark {
-    background-color: #0F0D00;
-    width: 100 vw;
-    padding: 10px;
-    margin: auto;
+
+
+
+@media only screen and (min-width: 600px) {
+    .hide-lg {
+        display: none;
+    }
 }
 
-.one {
-    font-family: 'Monsieur La Doulaise', cursive;
-    font-size: 4em;
-    
-}
-
-
-.two {
-    letter-spacing: 3px;
-    font-size: 5em;
-    font-family: 'Tulpen One', cursive;
-    color: #A0A0A0;
-    text-align: center;
+@media only screen and (max-width: 600px) {
+    .hide-sm {
+        display: none;
+    }
 }
 
 
+/* This is needed for some mobile phones to display the Google Icon font properly
+    Fonts used with this class are coutesy of Materialize library
+     */
+.material-icons {
+    text-rendering: optimizeLegibility;
+    -webkit-font-feature-settings: 'liga';
+    -moz-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+}
+  
+.hidden {
+    display: none;
+}
