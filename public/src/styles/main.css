@@ -10,6 +10,8 @@
     background-color: #0F0D00;
     padding: 10px;
     margin: auto;
+    outline-offset: 2px;
+    outline: 2px outset #0F0D00;
 }
 
 /* .one {
@@ -24,16 +26,17 @@
     flex-grow: 1;
 }
 .logo-container img {
-    height: 90%;
-    border-radius: 50%;
-    opacity: .9;
-    margin-left: 1%;
+    height: 100%;
+    /* border-radius: 50%; */
+    opacity: .75;
+    margin-left: 5%;
+    margin-right: 0;
 }
 .logo {
     padding-top: 1%;
-    margin-left: 2%;
+    margin-left: 7%;
     letter-spacing: 3px;
-    font-size: calc(3em + 2vw);
+    font-size: calc(2.7em + 2vw);
     font-family: 'Tulpen One', cursive;
     color: #A0A0A0;
     text-align: center;
@@ -76,7 +79,7 @@
 }
 
 a:visited {
-    color: #DDD5D0;
+    color: #A0A0A0;
 }
 body {
     background-color: #DDD5D0;
@@ -113,4 +116,9 @@ body {
   
 .hidden {
     display: none;
+}
+
+.flex-middle {
+    display: flex;
+    justify-content: middle;
 }
