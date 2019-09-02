@@ -14,7 +14,7 @@ function fetchWithError(url, options) {
         });
 }
 
-export function getWhiskeys() {
+export function getWhiskeys() {  
     const url = `${URL}/whiskeys`;
     return fetchWithError(url);
 }

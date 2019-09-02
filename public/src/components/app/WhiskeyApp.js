@@ -3,7 +3,6 @@ import Header from './Header.js';
 import WhiskeyList from '../whiskeys/WhiskeyList.js';
 import { getWhiskeys } from '../../services/whiskey-api.js';
 class WhiskeyApp extends Component {
-
     onRender(dom) {
         const header = new Header();
         dom.prepend(header.renderDOM());
@@ -18,6 +17,10 @@ class WhiskeyApp extends Component {
         getWhiskeys()
             .then(whiskeys => {
                 whiskeyList.update({ whiskeys });
+            })
+            .catch(err => {
+                // eslint-disable-next-line no-console
+                console.log(err);
             });
 
 

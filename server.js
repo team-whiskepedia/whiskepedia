@@ -45,7 +45,27 @@ app.use('/api/auth', authRoutes);
 // everything that starts with "/api" below here requires an auth token!
 //app.use('/api', ensureAuth);
 
-
+app.get('/api/whiskeys', (req, res) => {
+    client.query(`
+        SELECT
+            id,
+            title,
+            list_img_url,
+            detail_img_url,
+            region,
+            rating,
+            description
+        FROM whiskeys;
+    `)
+        .then(result => {
+            res.json(result.rows);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
+            });
+        });
+});
 
 
 
