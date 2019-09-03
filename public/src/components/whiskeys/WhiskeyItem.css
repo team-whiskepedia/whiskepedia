@@ -18,14 +18,13 @@
     color: #A0A0A0;
 }
 
-.reg-rat p {
+.details-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.whiskey-items {
-    font-family: 'Livvic', sans-serif; 
+.whiskey-items { 
     display: flex;
     flex-direction: column;
     align-items: left;
