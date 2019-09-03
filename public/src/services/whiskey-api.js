@@ -14,7 +14,7 @@ function fetchWithError(url, options) {
         });
 }
 
-export function getWhiskeys() {
+export function getWhiskeys() {  
     const url = `${URL}/whiskeys`;
     return fetchWithError(url);
 }
@@ -39,4 +39,9 @@ export function signIn(credentials) {
         },
         body: JSON.stringify(credentials)        
     });
+}
+
+export function getFlavors() {  
+    const url = `${URL}/flavors`;
+    return fetchWithError(url);
 }
