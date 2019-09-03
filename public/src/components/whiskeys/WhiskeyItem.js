@@ -5,9 +5,12 @@ class WhiskeyItem extends Component {
         const whiskey = this.props.whiskey;
 
         return /*html*/`
-        <li>
-            <h1>THIS IS A TEST</h1>
-            <p>${whiskey.title}</p>
+        <li class="whiskey-items">
+           <h1>${whiskey.title}</h1>
+           <p>Region: ${whiskey.region}</p>
+           <p>Rating: ${whiskey.rating}</p>
+           <p>${whiskey.description}</p>
+
         </li>
             
         `;
