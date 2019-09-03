@@ -1,7 +1,8 @@
 import Component from '../Component.js';
 import { Header } from './Header.js';
 import WhiskeyList from '../whiskeys/WhiskeyList.js';
-import { getWhiskeys } from '../../services/whiskey-api.js';
+import { getWhiskeys, getFlavors } from '../../services/whiskey-api.js';
+import { SearchContainer } from './SearchContainer.js';
 
 class WhiskeyListApp extends Component {
 
@@ -17,6 +18,15 @@ class WhiskeyListApp extends Component {
         getWhiskeys()
             .then(whiskeys => {
                 list.update({ whiskeys });
+            });
+
+        const searchContainer = new SearchContainer({ flavors: [] });
+        main.appendChild(searchContainer.renderDOM());
+
+        getFlavors()
+            .then(flavors => {
+                console.log(flavors);
+                searchContainer.update({ flavors });
             });
     }
 
