@@ -14,6 +14,7 @@ class WhiskeyItem extends Component {
                 <div className="reg-rat">
                 <p>Region: ${whiskey.region}</p>
                 <p>Rating: ${whiskey.rating}</p>
+                <p>Price: ${whiskey.price}</p>
                 <p>Flavors: Cherry, Oak, Peaty</p>
                 </div>
             </div>
