@@ -15,7 +15,6 @@ export class Header extends Component {
         const logoutButtonMobile = dom.querySelector('.log-out-mobile');
         const myBottles = dom.querySelector('.bottles');
         const myBottlesMobile = dom.querySelector('.bottles-mobile');
-        console.log(myBottles, myBottlesMobile);
         
         if(store.hasToken()) {
             logoutButton.classList.remove('no-display');
