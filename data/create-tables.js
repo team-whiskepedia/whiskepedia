@@ -16,14 +16,15 @@ client.query(`
         detail_img_url VARCHAR(256) NOT NULL,
         region VARCHAR(256) NOT NULL,
         rating INTEGER NOT NULL,
+        price INTEGER NOT NULL,
+        flavor_1 VARCHAR(50) NOT NULL REFERENCES flavors(name),
+        flavor_2 VARCHAR(50) NOT NULL REFERENCES flavors(name),
+        flavor_3 VARCHAR(50) NOT NULL REFERENCES flavors(name),
         description VARCHAR(256) NOT NULL
     );
 `)
 
 //can be inserted above description field
-//flavor_1 VARCHAR(50) NOT NULL REFERENCES flavors(name),
-//flavor_2 VARCHAR(50) NOT NULL REFERENCES flavors(name),
-//flavor_3 VARCHAR(50) NOT NULL REFERENCES flavors(name),
 
 
     .then(

@@ -43,9 +43,6 @@ module.exports = [
         comparable: [
             196
         ],
-        flavor1: 'cherry',
-        flavor2: 'amber',
-        flavor3: 'oak',
         tags: [
             {
                 title: 'smooth',
@@ -133,9 +130,6 @@ module.exports = [
             }
         ],
         comparable: [],
-        flavor1: 'rich',
-        flavor2: 'caramel',
-        flavor3: 'earthy',
         tags: [
             {
                 title: 'caramel',
@@ -255,9 +249,6 @@ module.exports = [
         comparable: [
             483
         ],
-        flavor1: 'cherry',
-        flavor2: 'oak',
-        flavor3: 'dry',
         tags: [
             {
                 title: 'cherry',
