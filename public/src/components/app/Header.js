@@ -35,12 +35,20 @@ export class Header extends Component {
             location = './auth.html';
         } 
         logoutButton.addEventListener('click', () => {
-            store.removeToken();
-            store.removeUser();
-            loginButton.classList.remove('.no-display');
-            logoutButton.classList.add('.no-display');
-            location = './';
+            this.logOut(loginButton, logoutButton, loginButtonMobile, logoutButtonMobile);
         });
+        logoutButtonMobile.addEventListener('click', () => {
+            this.logOut(loginButton, logoutButton, loginButtonMobile, logoutButtonMobile);
+        });
+    }
+    logOut(loginButton, logoutButton, loginButtonMobile, logoutButtonMobile) {
+        store.removeToken();
+        store.removeUser();
+        loginButton.classList.remove('.no-display');
+        loginButtonMobile.classList.remove('.no-display');
+        logoutButton.classList.add('.no-display');
+        logoutButtonMobile.classList.add('.no-display');
+        location = './';
     }
     
 
@@ -74,6 +82,7 @@ export class Header extends Component {
                     </ul>
                 </nav>
             </header>
-        `;
+            `;
     }
 }
+
