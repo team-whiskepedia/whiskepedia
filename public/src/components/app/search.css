@@ -5,7 +5,7 @@
     outline: 2px outset #0F0D00;
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 900px) {
     #search-pane {
         width: 30%;
     }
@@ -97,6 +97,7 @@
 
 
 .text-input, .text-input:active, .text-input:focus {
+    width: 100px;
     border: none;
     outline: none;
     padding: 0;
@@ -163,5 +164,6 @@
 .btn.round {
     border-radius: 50%;
     background-color: #98D2EB;
+    opacity: .80;
 }
 
