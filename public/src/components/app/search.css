@@ -5,7 +5,7 @@
     outline: 2px outset #0F0D00;
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 600px) {
     #search-pane {
         width: 30%;
     }
