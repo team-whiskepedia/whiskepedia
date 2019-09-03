@@ -5,7 +5,7 @@
     outline: 2px outset #0F0D00;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 700px) {
     #search-pane {
         width: 30%;
     }
@@ -28,12 +28,15 @@
     vertical-align: 15%;
 }
 
+.collapsible-menu {
+    overflow: hidden;
+    position: relative;
+}
 .collapsible-menu > label {
     display: block;
     font-size: 1.2em;
     padding: 3px;
     padding-top: 5px;
-    /* outline: 1px outset #0F0D00; */
     border-bottom: 1px solid #0F0D00;
     opacity: .80;
     color: #E8EBE4;
@@ -56,20 +59,32 @@
     transform: rotate(-90deg);
 }
 
-.collapsible-menu > input[type=checkbox]:not(:checked) ~ .menu-content  {
-    display: none;
-}
 
 .menu-content {
     margin-top: 10px;
     margin-bottom: 10px;
     width: 90%;
+    height: 100%;
     padding-left: 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     user-select: none;
+    opacity: 1.0;
+    transition: all;
+    transition-duration: 250ms;
+    transition-timing-function: ease-in-out;
 }
+.collapsible-menu > input[type=checkbox]:not(:checked) ~ .menu-content {
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+    height: 0px;
+    overflow: hidden;
+    opacity: 0.0;
+}
+
+
 .menu-content .grow {
     flex-grow: 1;
     margin-right: 10px;
@@ -80,6 +95,7 @@
     padding: 0;
 }
 
+
 .text-input, .text-input:active, .text-input:focus {
     border: none;
     outline: none;
@@ -88,6 +104,7 @@
     border-bottom: 1px solid #0F0D00;
     background-color: inherit;
 }
+
 
 /* radio button styling built from the concepts here:
 "Remove Circle Button in Radio Button And Use The Label As Picker" (https://jsfiddle.net/petrabarus/pPgS7/) */
@@ -132,8 +149,6 @@
 }
 
 
-
-
 .btn {
     height: 100%;
     line-height: 100%;
@@ -147,6 +162,6 @@
 }
 .btn.round {
     border-radius: 50%;
-    background-color: #2196F3;
+    background-color: #98D2EB;
 }
 
