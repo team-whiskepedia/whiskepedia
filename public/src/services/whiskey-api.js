@@ -18,3 +18,8 @@ export function getWhiskeys() {
     const url = `${URL}/whiskeys`;
     return fetchWithError(url);
 }
+
+export function getFlavors() {  
+    const url = `${URL}/flavors`;
+    return fetchWithError(url);
+}

@@ -54,6 +54,10 @@ app.get('/api/whiskeys', (req, res) => {
             detail_img_url,
             region,
             rating,
+            price,
+            flavor_1,
+            flavor_2,
+            flavor_3,
             description
         FROM whiskeys;
     `)
@@ -67,7 +71,23 @@ app.get('/api/whiskeys', (req, res) => {
         });
 });
 
-
+app.get('/api/flavors', (req, res) => {
+    client.query(`
+        SELECT
+            name,
+            category,
+            broad_category AS "broadCategory"
+        FROM flavors;
+    `)
+        .then(result => {
+            res.json(result.rows);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
+            });
+        });
+});
 
 // Start the server
 app.listen(PORT, () => {
