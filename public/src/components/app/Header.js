@@ -1,5 +1,5 @@
 import Component from '../Component.js';
-// import store from '../../services/store.js';
+import store from '../../services/store.js';
 
 export class Header extends Component {
     
@@ -9,9 +9,22 @@ export class Header extends Component {
         hamburgerMenu.addEventListener('click', () => {
             mobileNavLinksList.classList.toggle('displayed');
         });
+        if(store.hasToken()) {
+            const button = dom.querySelector('.log-out');
+            button.remove('hidden');
+
+            button.addEventListener('click', () => {
+                store.removeToken();
+                location = './';
+            });
+        }
+
+
     }
 
     renderHTML() {
+        const user = store.getUser() || 'Guest';
+
         return /*html*/`
             <header class="header dark">
                 <nav class="mobile-nav hide-lg">
@@ -19,8 +32,8 @@ export class Header extends Component {
                     <ul class='mobile-nav-links'>
                         <li><a href="#">Browse</a></li>
                         <li><a href="#">My Bottles</a></li>
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="/auth.html">Login</a></li>
+                        <li><a class ="log-out" href="#">Logout</a></li>
                     </ul>
                 </nav>
                 <div class="logo-container">
@@ -29,7 +42,7 @@ export class Header extends Component {
                 </div>
                 <nav class="desktop-nav hide-sm">
                     <div>
-                        <a href="#">Logged in as [NAME]</a>
+                        <a href="#">Logged in as ${user}</a>
                     </div>
                     <ul class="flex">
                         <li><a href="#">Browse</a></li>

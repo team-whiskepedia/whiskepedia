@@ -21,12 +21,13 @@ const authRoutes = createAuthRoutes({
         ).then(result => result.rows[0]);
     },
     insertUser(user, hash) {
+        console.log(user);
         return client.query(`
             INSERT into users (email, hash, display_name)
             VALUES ($1, $2, $3)
             RETURNING id, email, display_name as "name";
         `,
-        [user.email, hash, user.name]
+        [user.email, hash, user.displayName]
         ).then(result => result.rows[0]);
     }
 });
@@ -43,7 +44,7 @@ app.use(express.json()); // enable reading incoming json data
 app.use('/api/auth', authRoutes);
 
 // everything that starts with "/api" below here requires an auth token!
-//app.use('/api', ensureAuth);
+app.use('/api', ensureAuth);
 
 
 
