@@ -22,6 +22,13 @@ client.query(`
         flavor_3 VARCHAR(50) NOT NULL REFERENCES flavors(name),
         description VARCHAR(256) NOT NULL
     );
+    
+    CREATE TABLE users (
+        id SERIAL PRIMARY KEY,
+        email VARCHAR(256) NOT NULL,
+        hash VARCHAR(512) NOT NULL,
+        display_name VARCHAR(256) NOT NULL
+    );
 `)
 
 //can be inserted above description field
