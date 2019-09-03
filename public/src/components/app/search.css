@@ -1,0 +1,152 @@
+#search-pane {
+    width: 100%;
+    background-color: #D2D5DD;
+    outline-offset: 2px;
+    outline: 2px outset #0F0D00;
+}
+
+@media only screen and (min-width: 600px) {
+    #search-pane {
+        width: 30%;
+    }
+}
+
+#search-pane {
+    margin-top: 10px;
+}
+#search-pane h3 {
+    padding: 5px;
+    padding-left: 10px;
+    padding-top: 10px;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    color: #A0A0A0;
+    background-color: #0F0D00;
+}
+#search-pane h3 span {
+    vertical-align: 15%;
+}
+
+.collapsible-menu > label {
+    display: block;
+    font-size: 1.2em;
+    padding: 3px;
+    padding-top: 5px;
+    /* outline: 1px outset #0F0D00; */
+    border-bottom: 1px solid #0F0D00;
+    opacity: .80;
+    color: #E8EBE4;
+    background-color: #36393B;
+    cursor: pointer;
+    user-select: none;
+}
+.collapsible-menu label span {
+    vertical-align: 5px;
+}
+.collapsible-menu > input[type=checkbox] {
+    display: none;
+}
+.collapsible-menu > input[type=checkbox] + label i {
+    transition: all;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+}
+.collapsible-menu > input[type=checkbox]:not(:checked) + label i {
+    transform: rotate(-90deg);
+}
+
+.collapsible-menu > input[type=checkbox]:not(:checked) ~ .menu-content  {
+    display: none;
+}
+
+.menu-content {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 90%;
+    padding-left: 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+.menu-content .grow {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+.menu-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.text-input, .text-input:active, .text-input:focus {
+    border: none;
+    outline: none;
+    padding: 0;
+    font-size: 1.1em;
+    border-bottom: 1px solid #0F0D00;
+    background-color: inherit;
+}
+
+/* radio button styling built from the concepts here:
+"Remove Circle Button in Radio Button And Use The Label As Picker" (https://jsfiddle.net/petrabarus/pPgS7/) */
+.radio-input {
+    display: none;
+    border: none;
+    outline: none;
+}
+.radio-input + label {
+    border: none;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+}
+.radio-input.yes + label, .radio-input.no + label {
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    vertical-align: 5px;
+}
+.radio-input + label span {
+    vertical-align: -5px;
+}
+.radio-input:checked + label {
+    border: none;
+    border-radius: 5px;
+    background-color: #A0A0A0;
+}
+.radio-input.yes + label, .radio-input.no + label {
+    background-color: transparent;
+    border-radius: 50%;
+    opacity: 1.0;
+    transition: background-color;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+}
+.radio-input:checked.yes + label {
+    background-color: green;
+}
+.radio-input:checked.no + label {
+    background-color: red;
+}
+
+
+
+
+.btn {
+    height: 100%;
+    line-height: 100%;
+    vertical-align: middle;
+    padding: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+.btn:hover {
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+}
+.btn.round {
+    border-radius: 50%;
+    background-color: #2196F3;
+}
+
