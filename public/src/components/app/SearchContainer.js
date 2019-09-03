@@ -15,7 +15,7 @@ export class SearchContainer extends Component {
             }
             return broadCategories;
         }, []);
-        flavorsByBroadCategory.sort((objA, objB) => objA.category.toLowerCase() === 'tastes' ? -1 : 1);
+        flavorsByBroadCategory.sort(objA => objA.category.toLowerCase() === 'tastes' ? -1 : 1);
         
         const searchPane = dom.querySelector('#search-pane');
         flavorsByBroadCategory.forEach(category => {
