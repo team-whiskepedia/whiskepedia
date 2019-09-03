@@ -67,7 +67,23 @@ app.get('/api/whiskeys', (req, res) => {
         });
 });
 
-
+app.get('/api/flavors', (req, res) => {
+    client.query(`
+        SELECT
+            name,
+            category,
+            broad_category
+        FROM flavors;
+    `)
+        .then(result => {
+            res.json(result.rows);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
+            });
+        });
+});
 
 // Start the server
 app.listen(PORT, () => {
