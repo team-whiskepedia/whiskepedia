@@ -1,4 +1,4 @@
-import WhiskeyApp from './components/app/WhiskeyApp.js';
+import WhiskeyListApp from './components/app/WhiskeyListApp.js';
 
-const app = new WhiskeyApp();
+const app = new WhiskeyListApp();
 document.body.prepend(app.renderDOM());
