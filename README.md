@@ -38,7 +38,7 @@ Clearly defined database schemas
   - Header component - DONE
   - Search component
   - Sort component
-  - Whiskey cards container - DONE (minor tweaks to CSS needed)
+  - Whiskey cards container - DONE
     - Whiskey card component
 
 - User Bottles page
