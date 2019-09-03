@@ -72,7 +72,7 @@ app.get('/api/flavors', (req, res) => {
         SELECT
             name,
             category,
-            broad_category
+            broad_category AS "broadCategory"
         FROM flavors;
     `)
         .then(result => {

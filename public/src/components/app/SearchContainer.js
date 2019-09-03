@@ -6,15 +6,16 @@ export class SearchContainer extends Component {
     onRender(dom) {
         
         const flavorsByBroadCategory = this.props.flavors.reduce((broadCategories, flavor) => {
-            const existingCategory = broadCategories.find((item) => item.category === flavor.broadCategory);
-            if(existingCategory) {
-                existingCategory.flavors.push(flavor.name);
+            const existingIndex = broadCategories.findIndex((item) => item.category === flavor.broadCategory);
+            if(existingIndex >= 0) {
+                broadCategories[existingIndex].flavors.push(flavor.name);
             } 
-            else {
+            else if(flavor.broadCategory !== 'IGNORE') {
                 broadCategories.push({ category: flavor.broadCategory, flavors: [flavor.name] });
             }
             return broadCategories;
         }, []);
+        flavorsByBroadCategory.sort((objA, objB) => objA.category.toLowerCase() === 'tastes' ? -1 : 1);
         
         const searchPane = dom.querySelector('#search-pane');
         flavorsByBroadCategory.forEach(category => {
