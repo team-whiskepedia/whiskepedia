@@ -1,6 +1,16 @@
+import store from './store.js';
+
 const URL = '/api';
 
+const token = store.getToken();
+
 function fetchWithError(url, options) {
+    if(token) {
+        options = options || {};
+        options.headers = options.headers || {};
+        options.headers.Authorization = token;
+    }
+
     return fetch(url, options)
         .then(response => {
             if(response.ok) {

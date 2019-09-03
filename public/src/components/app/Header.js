@@ -23,7 +23,6 @@ export class Header extends Component {
             loginButtonMobile.classList.add('no-display');
             myBottles.classList.remove('no-display');
             myBottlesMobile.classList.remove('no-display');
-
         }
         if(!store.hasToken() && location.pathname !== '/auth.html') {
             loginButton.classList.remove('no-display');
@@ -32,7 +31,6 @@ export class Header extends Component {
             logoutButtonMobile.classList.add('no-display');
             myBottles.classList.add('no-display');
             myBottlesMobile.classList.add('no-display');
-            location = './auth.html';
         } 
         logoutButton.addEventListener('click', () => {
             this.logOut(loginButton, logoutButton, loginButtonMobile, logoutButtonMobile);
@@ -53,14 +51,15 @@ export class Header extends Component {
     
 
     renderHTML() {
-        const user = store.getUser() || 'Not Logged In';
+        const user = store.getUser();
+        const userMessage = user ? 'Logged in as ' + user : 'Not Logged In';
 
         return /*html*/`
             <header class="header dark">
                 <nav class="mobile-nav hide-lg">
                     <a><i class="material-icons">menu</i></a>
                     <ul class='mobile-nav-links'>
-                        <li><a href="#">Browse</a></li>
+                        <li><a href="/browse.html">Browse</a></li>
                         <li class="bottles-mobile no-display"><a href="#">My Bottles</a></li>
                         <li class="log-in-mobile"><a href="/auth.html">Login</a></li>
                         <li class="log-out-mobile no-display"><a href="/auth.html">Logout</a></li>
@@ -72,12 +71,12 @@ export class Header extends Component {
                 </div>
                 <nav class="desktop-nav hide-sm">
                     <div>
-                        <a href="#">${user}</a>
+                        <a href="#">${userMessage}</a>
                     </div>
                     <ul class="flex">
-                        <li><a href="#">Browse</a></li>
+                        <li><a href="/browse.html">Browse</a></li>
                         <li class="bottles no-display"><a href="#">My Bottles</a></li>
-                        <li  class="log-in"><a class="log-in" href="/auth.html">Login</a></li>
+                        <li class="log-in"><a class="log-in" href="/auth.html">Login</a></li>
                         <li class="log-out no-display"><a href="/auth.html">Logout</a></li>
                     </ul>
                 </nav>

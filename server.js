@@ -43,9 +43,6 @@ app.use(express.json()); // enable reading incoming json data
 // setup authentication routes
 app.use('/api/auth', authRoutes);
 
-// everything that starts with "/api" below here requires an auth token!
-app.use('/api', ensureAuth);
-
 app.get('/api/whiskeys', (req, res) => {
     client.query(`
         SELECT
@@ -89,6 +86,9 @@ app.get('/api/flavors', (req, res) => {
             });
         });
 });
+
+// everything that starts with "/api" below here requires an auth token!
+app.use('/api', ensureAuth);
 
 // Start the server
 app.listen(PORT, () => {

@@ -9,7 +9,7 @@ function success(user) {
     store.setToken(user.token);
     store.setUser(user.name);
     const searchParams = new URLSearchParams(location.search);
-    location = searchParams.get('redirect') || './index.html';
+    location = searchParams.get('redirect') || './browse.html';
 }
 
 
