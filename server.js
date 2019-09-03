@@ -54,6 +54,10 @@ app.get('/api/whiskeys', (req, res) => {
             detail_img_url,
             region,
             rating,
+            price,
+            flavor_1,
+            flavor_2,
+            flavor_3,
             description
         FROM whiskeys;
     `)
