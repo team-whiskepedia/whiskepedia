@@ -25,7 +25,6 @@ class WhiskeyListApp extends Component {
 
         getFlavors()
             .then(flavors => {
-                console.log(flavors);
                 searchContainer.update({ flavors });
             });
     }
