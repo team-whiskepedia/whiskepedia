@@ -1,95 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Anton|Bai+Jamjuree|Fredericka+the+Great|Gabriela|Julius+Sans+One|Lily+Script+One|Sarala|Signika+Negative|Tulpen+One&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Monsieur+La+Doulaise&display=swap');
 
-.header {
-    display: flex;
-    height: 10vh;
-    margin: 0px;
-}
-.dark {
-    background-color: #0F0D00;
-    padding: 10px;
-    margin: auto;
-    outline-offset: 2px;
-    outline: 2px outset #0F0D00;
-}
-
 /* .one {
     font-family: 'Monsieur La Doulaise', cursive;
     font-size: 4em;
 } */
 
-.logo-container {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-}
-.logo-container img {
-    height: 100%;
-    /* border-radius: 50%; */
-    opacity: .75;
-    margin-left: 5%;
-    margin-right: 0;
-}
-.logo {
-    padding-top: 1%;
-    margin-left: 7%;
-    letter-spacing: 3px;
-    font-size: calc(2.7em + 2vw);
-    font-family: 'Tulpen One', cursive;
-    color: #A0A0A0;
-    text-align: center;
-    text-decoration: none;
+* {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.mobile-nav {
-    display: flex;
-    align-items: center;
-}
-.mobile-nav i {
-    color: #A0A0A0;
-    position: relative;
-}
-.mobile-nav ul {
-    position: absolute;
-    left: 0;
-    list-style: none;
-    padding: 10px;
-}
-
-.desktop-nav {
-    display: flex;
-    flex-direction: column-reverse;
-}
-.desktop-nav ul {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    padding: 0;
-}
-.desktop-nav li {
-    margin: 10px;
-}
-.desktop-nav div {
-    text-align: center;
-}
-.desktop-nav div a {
-    text-decoration: none;
-}
-
-a:visited {
-    color: #A0A0A0;
-}
 body {
     background-color: #DDD5D0;
     background-image: url('../../assets/whiskey-wall.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
-
-
-
 
 @media only screen and (min-width: 600px) {
     .hide-lg {

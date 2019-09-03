@@ -11,7 +11,7 @@ The Whiskepedia app is for finding and researching whiskeys
 
 ## Getting Started
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
-Clone the repository from GitHub: https://github.com/team-whiskepedia/whiskepedia
+Clone the repository from GitHub: <https://github.com/team-whiskepedia/whiskepedia>
 Run ```npm i```
 Run ```npm i -D```
 Create a local postgres database with the name 'whiskepedia', and link to it in your .env file (DATABASE_URL= postgres://localhost:5432/whiskepedia)

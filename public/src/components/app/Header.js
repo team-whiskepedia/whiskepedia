@@ -4,29 +4,26 @@ import Component from '../Component.js';
 export class Header extends Component {
     
     onRender(dom) {
-        // const logout = dom.querySelector('.logout');
-        // if(store.hasToken()) {
-        //     logout.classList.remove('hide');
-        // }
-        // logout.addEventListener('click', () => {
-        //     store.removeToken();
-        // });
+        const hamburgerMenu = dom.querySelector('.mobile-nav > a');
+        const mobileNavLinksList = dom.querySelector('.mobile-nav-links');
+        hamburgerMenu.addEventListener('click', () => {
+            mobileNavLinksList.classList.toggle('displayed');
+        });
     }
 
     renderHTML() {
         return /*html*/`
             <header class="header dark">
+                <nav class="mobile-nav hide-lg">
+                    <a><i class="material-icons">menu</i></a>
+                    <ul class='mobile-nav-links'>
+                        <li><a href="#">Browse</a></li>
+                        <li><a href="#">My Bottles</a></li>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </nav>
                 <div class="logo-container">
-                    <nav class="mobile-nav hide-lg">
-                        <a><i class="material-icons">menu</i></a>
-                        <ul class="hidden">
-                            <li><a href="#">Browse</a></li>
-                            <li><a href="#">My Bottles</a></li>
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">Logout</a></li>
-                            <li><a href="#">Logged in as [NAME]</a></li>
-                        </ul>
-                    </nav>
                     <img class="hide-sm" src="assets/woodford.png" alt="logo image">
                     <a class="logo" href="index.html">Whiskepedia</a>
                 </div>
