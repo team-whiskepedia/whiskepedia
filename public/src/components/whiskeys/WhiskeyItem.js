@@ -10,13 +10,13 @@ class WhiskeyItem extends Component {
                 <h2 class="whiskey-title">${whiskey.title}</h2>
             </div>
             <div class="img-container">
-                <img class="list-img" src="${whiskey.detail_img_url}" alt=""/>
-                <div className="reg-rat">
-                <p>Region: ${whiskey.region}</p>
-                <p>Rating: ${whiskey.rating}</p>
-                <p>Price: ${whiskey.price}</p>
-                <p>Flavors: Cherry, Oak, Peaty</p>
-                </div>
+                <img     class="list-img" src="${whiskey.detail_img_url}" alt=""/>
+            <div className="reg-rat">
+                <p><span class="whiskey-details">Region:</span> ${whiskey.region}</p>
+                <p><span class="whiskey-details">Rating:</span> ${whiskey.rating}</p>
+                <p><span class="whiskey-details">Price:</span> $65 /bottle</p>
+                <p><span class="whiskey-details">Flavors:</span> Cherry, Oak, Peaty</p>
+            </div>
             </div>
         </li>
             
