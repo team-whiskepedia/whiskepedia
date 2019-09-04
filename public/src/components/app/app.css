@@ -73,7 +73,6 @@
         height: 200px;
         background-image: url(../../../assets/whiskey-sprite-opaque.png);
         background-repeat: no-repeat;
-        /* background-size: 900px 270px; */
         background-size: 1200px 360px;
         left: 500px;
         top: -10px;
@@ -85,18 +84,14 @@
     @keyframes scroll-magnifier {
         0%, 100% { 
             left: -90px;
-            /* background-position: 100px -45px; */
             background-position: 50px -140px;
         }
         50% {
             left: 480px;
-            /* background-position: -770px -45px; */
             background-position: -1040px -140px;
         }
     }
-
 }
-
 
 
 .info {
