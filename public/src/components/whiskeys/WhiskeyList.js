@@ -7,19 +7,22 @@ class WhiskeyList extends Component {
         const whiskeys = this.props.whiskeys;
 
         const sortPaginateBar = new SortPaginate();
-        dom.appendChild(sortPaginateBar.renderDOM());
+        dom.prepend(sortPaginateBar.renderDOM());
 
+        const listArea = dom.querySelector('.whiskey-container');
         whiskeys.forEach(whiskey => {
             const props = { whiskey: whiskey };
             const whiskeyItem = new WhiskeyItem(props);
             const whiskeyItemDOM = whiskeyItem.renderDOM();
-            dom.appendChild(whiskeyItemDOM);
+            listArea.appendChild(whiskeyItemDOM);
         });
     }
 
     renderHTML() {
         return /*html*/`
-            <ul class="whiskey-container"></ul>
+            <div>
+                <ul class="whiskey-container"></ul>
+            </div>
         `;
     }
 }
