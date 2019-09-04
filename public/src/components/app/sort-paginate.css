@@ -5,8 +5,7 @@
     justify-content: flex-end;
     align-items: center;
     background-color: #D2D5DD;
-    outline-offset: 2px;
-    outline: 2px outset #0F0D00;
+    border: 1px solid #A0A0A0;
     margin: 8px;
 }
 
