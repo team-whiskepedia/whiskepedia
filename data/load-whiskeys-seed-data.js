@@ -1,10 +1,8 @@
 const superagent = require('superagent');
 const client = require('../lib/client');
 
-
 const URL = 'https://evening-citadel-85778.herokuapp.com:443/shoot/';
 let whiskeys = [];
-
 async function getAllWhiskeys() {
     for(let page = 1; page <= 32; page++) {
         
