@@ -4,14 +4,17 @@ const client = require('../lib/client');
 const URL = 'https://evening-citadel-85778.herokuapp.com:443/shoot/';
 let whiskeys = [];
 async function getAllWhiskeys() {
-    for(let page = 1; page <= 32; page++) {
+    for(let pageNumber = 1; pageNumber <= 32; pageNumber++) {
         
-        const url = `${URL}?page=${page}`;
+        const url = `${URL}?page=${pageNumber}`;
         
         whiskeys = await superagent
             .get(url)
             .then(res => res.body.results)
-            .then(page => whiskeys = [...whiskeys, ...page]);
+            .then(page => {
+                console.log('saving page ', pageNumber, 'of 32');
+                return whiskeys = [...whiskeys, ...page];
+            });
     }
     return whiskeys;
 }
