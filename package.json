@@ -11,9 +11,10 @@
     "start:watch": "nodemon server.js --ignore public",
     "create-tables": "node data/create-tables.js",
     "drop-tables": "node data/drop-tables.js",
-    "load-seed-data": "node data/load-seed-data.js",
+    "load-flavors": "node data/load-flavors-seed-data.js",
+    "load-whiskeys": "node data/load-whiskeys-seed-data.js",
     "recreate-tables": "npm run drop-tables && npm run create-tables",
-    "setup-db": "npm run recreate-tables && npm run load-seed-data"
+    "setup-db": "npm run recreate-tables && npm run load-flavors && npm run load-whiskeys"
   },
   "repository": {
     "type": "git",
