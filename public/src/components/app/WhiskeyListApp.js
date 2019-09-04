@@ -11,7 +11,9 @@ class WhiskeyListApp extends Component {
         dom.prepend(header.renderDOM());
         
         const main = dom.querySelector('main');
-
+        
+        const searchContainer = new SearchContainer({ flavors: [] });
+        main.appendChild(searchContainer.renderDOM());
         const list = new WhiskeyList({ whiskeys: [] });
         main.appendChild(list.renderDOM());
 
@@ -20,8 +22,6 @@ class WhiskeyListApp extends Component {
                 list.update({ whiskeys });
             });
 
-        const searchContainer = new SearchContainer({ flavors: [] });
-        main.appendChild(searchContainer.renderDOM());
 
         getFlavors()
             .then(flavors => {
