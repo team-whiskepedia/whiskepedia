@@ -35,7 +35,7 @@ export class App extends Component {
                             </ul>
                         </p>
                         <div class="row">
-                            <p>Login now to explore your customized flavor profile!</p>
+                            <p>Login now to develop your customized flavor profile!</p>
                             <a href="/auth.html">Login</a>
                         </div>
                         <div class="row">
