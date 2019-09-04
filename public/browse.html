@@ -9,12 +9,34 @@
     <link rel="stylesheet" href="src/styles/reset.css">
     <link rel="stylesheet" href="src/components/app/header.css">
     <link rel="stylesheet" href="src/components/app/search.css">
+    <link rel="stylesheet" href="src/components/app/sort-paginate.css">
     <link rel="stylesheet" href="src/components/whiskeys/WhiskeyItem.css">
     <link rel="stylesheet" href="src/components/whiskeys/WhiskeyList.css">
     <link rel="stylesheet" href="src/styles/main.css">
     
 </head>
 <body>
+    <section id="sort-pane">
+        <div class="sorting">
+            <select class="sort-dropdown">
+                <option value="">Sort By</option>
+                <option value="flavor-a-z">Primary Flavor: A-Z</option>
+                <option value="flavor-z-a">Primary Flavor: Z-A</option>
+                <option value="name-a-z">Name: A-Z</option>
+                <option value="name-z-a">Name: Z-A</option>
+                <option value="rating">Rating</option>
+                <option value="price">Price</option>
+            </select>
+        </div>
+        <div class="pagination">
+            <a href="#" class="page first">first</a>
+            <a href="#" class="page">2</a>
+            <span class="page active">3</span>
+            <a href="#" class="page">4</a>
+            <a href="#" class="page">5</a>
+            <a href="#" class="page last">last</a>
+        </div>
+    </section>
     <script type="module" src="src/whiskey-list.js"></script>
 </body>
 </html>
