@@ -6,7 +6,7 @@
 }
 .dark {
     background-color: #0F0D00;
-    margin: auto;
+    margin: 7px;
     outline-offset: 2px;
     outline: 2px outset #0F0D00;
 }
