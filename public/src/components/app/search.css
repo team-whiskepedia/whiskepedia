@@ -1,5 +1,7 @@
 #search-pane {
     width: 100%;
+    margin: 8px;
+    margin-top: 10px;
     background-color: #D2D5DD;
     outline-offset: 2px;
     outline: 2px outset #0F0D00;
@@ -11,9 +13,6 @@
     }
 }
 
-#search-pane {
-    margin-top: 10px;
-}
 #search-pane h3 {
     padding: 5px;
     padding-left: 10px;
