@@ -57,7 +57,7 @@ app.get('/api/whiskeys', (req, res) => {
             flavor_2,
             flavor_3,
             description
-        FROM whiskeys;
+        FROM whiskeys LIMIT 100;
     `)
         .then(result => {
             res.json(result.rows);

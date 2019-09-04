@@ -6,7 +6,10 @@ class WhiskeyList extends Component {
     onRender(dom) {
         const whiskeys = this.props.whiskeys;
 
-        const sortPaginateBar = new SortPaginate({ pages: { current: 1, last: 20 } });
+        const sortPaginateBar = new SortPaginate({ 
+            pages: { current: 1, last: 20 },
+            pageChange: this.props.pageChange 
+        });
         dom.prepend(sortPaginateBar.renderDOM());
 
         const listArea = dom.querySelector('.whiskey-container');
