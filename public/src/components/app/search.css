@@ -1,5 +1,5 @@
 #search-pane {
-    width: 100%;
+    width: calc(100% - 16px);
     margin: 8px;
     margin-top: 10px;
     background-color: #D2D5DD;
@@ -7,11 +7,11 @@
     outline: 2px outset #0F0D00;
 }
 
-@media only screen and (min-width: 600px) {
+/* @media only screen and (min-width: 600px) {
     #search-pane {
         width: 30%;
     }
-}
+} */
 
 #search-pane h3 {
     padding: 5px;

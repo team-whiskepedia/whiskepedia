@@ -1,6 +1,13 @@
 .whiskey-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(30vw, 1fr));
     grid-gap: 15px;
-
+    margin: 5px;
+    align-items: center;
+}
+@media only screen and (max-width: 900px) {
+    .whiskey-container {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
 }

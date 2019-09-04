@@ -1,24 +1,21 @@
 #sort-pane {
-    width: 100%;
+    height: auto;
+    width: calc(100%-5px);
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
     align-items: center;
     background-color: #D2D5DD;
     border: 1px solid #A0A0A0;
-    margin: 8px;
-}
+    margin: 5px;
+    overflow: contain;
 
-
-@media only screen and (min-width: 600px) {
-    #sort-pane {
-        width: 66%;
-        float: right;
-    }
 }
 
 .sorting {
+
     display: inline-block;
+    max-width: 30;
     margin-right: 10%;
     padding: 8px;
     font-size: 0.9em;
@@ -39,7 +36,6 @@
 .pagination {
     display: inline-block;
     margin: 10px;
-    /* flex-grow: 1; */
 }
 /* Baseline CSS for pagination from code pen:
 https://codepen.io/JFarrow/pen/LAqwo  */
