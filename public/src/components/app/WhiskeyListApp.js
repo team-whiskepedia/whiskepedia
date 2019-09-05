@@ -27,6 +27,7 @@ class WhiskeyListApp extends Component {
         }
 
         loadWhiskeys();
+        window.addEventListener('hashchange', () => loadWhiskeys());
 
         getFlavors()
             .then(flavors => {

@@ -93,6 +93,12 @@
     margin: 0;
     padding: 0;
 }
+.menu-content button {
+    border: 2px solid transparent;
+}
+.menu-content button:active {
+    border: 2px solid #A0A0A0;
+}
 
 
 .text-input, .text-input:active, .text-input:focus {

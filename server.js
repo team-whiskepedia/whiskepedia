@@ -44,6 +44,7 @@ app.use(express.json()); // enable reading incoming json data
 app.use('/api/auth', authRoutes);
 
 app.get('/api/whiskeys', (req, res) => {
+    console.log(req.query.search);
     client.query(`
         SELECT
             id,
@@ -57,8 +58,11 @@ app.get('/api/whiskeys', (req, res) => {
             flavor_2,
             flavor_3,
             description
-        FROM whiskeys LIMIT 100;
-    `)
+        FROM whiskeys
+        WHERE title ILIKE '%' || $1 || '%'
+        LIMIT 100;
+    `,
+    [req.query.search])
         .then(result => {
             res.json(result.rows);
         })

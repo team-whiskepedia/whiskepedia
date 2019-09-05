@@ -1,10 +1,10 @@
 import Component from '../Component.js';
 import { SearchCategory } from '../flavors/SearchCategory.js';
+import hashStorage from '../../services/hash-storage.js';
 
 export class SearchContainer extends Component {
 
     onRender(dom) {
-        
         const flavorsByBroadCategory = this.props.flavors.reduce((broadCategories, flavor) => {
             const existingIndex = broadCategories.findIndex((item) => item.category === flavor.broadCategory);
             if(existingIndex >= 0) {
@@ -26,6 +26,15 @@ export class SearchContainer extends Component {
             }); 
             searchPane.appendChild(searchCategory.renderDOM());
         });
+
+        const searchInput = dom.querySelector('input[type=search]');
+        dom.querySelector('form').addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            hashStorage.set({ search: searchInput.value });
+        });
+
+        window.addEventListener('hashchange', () => searchInput.value = hashStorage.get().search || '');
     }
 
     renderHTML() {
@@ -38,7 +47,7 @@ export class SearchContainer extends Component {
                         <label for="search-container"><i class="material-icons rotatable">details</i><span> By Name</span></label>
                         <form class="menu-content">
                             <input class="text-input grow" type="search" name="search-by-name" placeholder="Search by Whisky Name">
-                            <i class="btn round material-icons">search</i>
+                            <button class="btn round material-icons">search</button>
                         </form>
                     </div>
                     <div class="collapsible-menu hidden">
