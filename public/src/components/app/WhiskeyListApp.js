@@ -39,7 +39,7 @@ class WhiskeyListApp extends Component {
         return /*html*/`
             <div>
                 <!-- header goes here -->
-                <main></main>
+                <main class="responsive-main"></main>
             </div>
         `;
     }
