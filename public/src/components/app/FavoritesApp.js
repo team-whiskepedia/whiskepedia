@@ -11,7 +11,7 @@ class FavoritesApp extends Component {
         dom.prepend(header.renderDOM());
 
         const main = dom.querySelector('main');
-        const whiskeyList = new WhiskeyList({ whiskeys: [] });
+        const whiskeyList = new WhiskeyList({ whiskeys: [], removedFavorite: true });
         main.appendChild(whiskeyList.renderDOM());
 
         getFavorites()

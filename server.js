@@ -155,9 +155,10 @@ app.post('/api/me/favorites', (req, res) => {
 });
 
 app.delete('/api/me/favorites/:id', (req, res) => {
+    console.log(req.params);
     client.query(`
         DELETE FROM favorites
-        WHERE id = $1
+        WHERE whiskey_id = $1
         AND   user_id = $2;
     `,
     [req.params.id, req.userId]
