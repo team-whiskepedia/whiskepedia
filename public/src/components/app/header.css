@@ -39,6 +39,7 @@
     display: flex;
     align-items: center;
     position: relative;
+    z-index: 1;
 }
 .mobile-nav a {
     margin-left: 20px;
@@ -83,14 +84,13 @@
     flex-direction: column-reverse;
     position: relative;
 }
-.desktop-nav a {
+.desktop-nav a, .desktop-nav span {
     color: #A0A0A0;
     text-decoration: none;
 }
 .desktop-nav ul {
     display: flex;
     flex-direction: row;
-    align-items: center;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -99,17 +99,22 @@
 .desktop-nav li {
     padding-left: 5px;
     padding-right: 5px;
-    padding-top: 5px;;
+    height: 100%;
     transition: all;
     transition-duration: 200ms;
     transition-timing-function: ease-in;
 }
+.desktop-nav li a {
+    position: relative;
+    top: 40%;
+} 
 .desktop-nav li:hover {
     background-color: #36393B;
 }
 .desktop-nav div {
     text-align: center;
     opacity: .50;
+    user-select: none;
 }
 .no-display {
     display: none;
