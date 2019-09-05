@@ -117,27 +117,14 @@ app.use('/api', ensureAuth);
 app.get('/api/me/favorites', (req, res) => {
     
     client.query(`
-    SELECT  f.id,
-            f.title,
-            w.id,
-            w.list_img_url,
-            w.detail_img_url,
-            w.region,
-            w.rating,
-            w.price,
-            w.flavor_1,
-            w.flavor_2,
-            w.flavor_3,
-            w.flavor_4,
-            w.flavor_5,
-            w.description,
-            f.user_id
-    FROM favorites f
-    JOIN whiskeys w
-    ON f.id = w.id
-    WHERE user_id = $1;
-    `,
-    [req.userId]
+        SELECT  f.whiskey_id,
+                f.user_id,
+                w.*
+        FROM favorites f
+        JOIN whiskeys w
+        ON f.whiskey_id = w.id
+        WHERE f.user_id = $1;
+        `, [req.userId]
     )
         .then(result => {
             res.json(result.rows);
@@ -151,15 +138,11 @@ app.get('/api/me/favorites', (req, res) => {
 app.post('/api/me/favorites', (req, res) => {
     const drink = req.body;
     client.query(`
-    INSERT INTO favorites (id, title, user_id)
-    VALUES ($1, $2, $3)
-    RETURNING id, title, user_id as "userId";
-`,
-    [ 
-        drink.id,
-        drink.title, 
-        req.userId 
-    ]
+        INSERT INTO favorites (title, whiskey_id, user_id)
+        VALUES ($1, $2, $3)
+        RETURNING title, whiskey_id as "whiskeyId", user_id as "userId";
+    `,
+    [drink.title, drink.id, req.userId]
     )
         .then(result => {                                    
             res.json(result.rows[0]);
