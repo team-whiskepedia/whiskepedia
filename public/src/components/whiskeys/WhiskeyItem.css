@@ -19,7 +19,7 @@
     flex-wrap: wrap;
 }
 
-p {
+.details {
     max-width: 80%;
     font-size: .8em;
 }
