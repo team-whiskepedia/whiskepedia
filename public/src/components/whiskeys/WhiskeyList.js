@@ -11,8 +11,13 @@ class WhiskeyList extends Component {
         dom.prepend(sortPaginateBar.renderDOM());
 
         const listArea = dom.querySelector('.whiskey-container');
+        // const favorites = getFavorites();
         whiskeys.forEach(whiskey => {
-            const props = { whiskey: whiskey, flavorCategories: flavorCategories };
+            const props = { 
+                whiskey: whiskey, 
+                flavorCategories: flavorCategories,
+                removedFavorite: this.props.removedFavorite
+            };
             const whiskeyItem = new WhiskeyItem(props);
             const whiskeyItemDOM = whiskeyItem.renderDOM();
             listArea.appendChild(whiskeyItemDOM);

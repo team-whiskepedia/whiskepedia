@@ -35,7 +35,8 @@ client.query(`
     CREATE TABLE favorites (
         title VARCHAR(256) NOT NULL PRIMARY KEY,
         whiskey_id INTEGER NOT NULL REFERENCES whiskeys(id),
-        user_id INTEGER NOT NULL REFERENCES users(id)
+        user_id INTEGER NOT NULL REFERENCES users(id),
+        is_favorite BOOLEAN DEFAULT TRUE
     );
 `)
     .then(
