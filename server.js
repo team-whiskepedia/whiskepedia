@@ -115,11 +115,26 @@ app.use('/api', ensureAuth);
 
 // User Favorites       
 app.get('/api/me/favorites', (req, res) => {
+    
     client.query(`
-    SELECT  id,
-            title,
-            user_id
-    FROM favorites
+    SELECT  f.id,
+            f.title,
+            w.id,
+            w.list_img_url,
+            w.detail_img_url,
+            w.region,
+            w.rating,
+            w.price,
+            w.flavor_1,
+            w.flavor_2,
+            w.flavor_3,
+            w.flavor_4,
+            w.flavor_5,
+            w.description,
+            f.user_id
+    FROM favorites f
+    JOIN whiskeys w
+    ON f.id = w.id
     WHERE user_id = $1;
     `,
     [req.userId]
