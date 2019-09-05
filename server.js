@@ -75,8 +75,8 @@ app.get('/api/flavors', (req, res) => {
             name,
             category,
             broad_category AS "broadCategory"
-        FROM flavors;
-    `)
+            FROM flavors;
+            `)
         .then(result => {
             res.json(result.rows);
         })
@@ -87,8 +87,71 @@ app.get('/api/flavors', (req, res) => {
         });
 });
 
-// everything that starts with "/api" below here requires an auth token!
+ // everything that starts with "/api" below here requires an auth token!
 app.use('/api', ensureAuth);
+
+// User Favorites       
+app.get('/api/me/favorites', (req, res) => {
+    client.query(`
+    SELECT  id,
+            title,
+            user_id
+    FROM favorites
+    WHERE user_id = $1;
+    `,
+    [req.userId]
+    )
+        .then(result => {
+            res.json(result.rows);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
+            });
+        });
+});
+app.post('/api/me/favorites', (req, res) => {
+    const drink = req.body;
+    client.query(`
+    INSERT INTO favorites (id, title, user_id)
+    VALUES ($1, $2, $3)
+    RETURNING id, title, user_id as "userId";
+`,
+    [ 
+        drink.id,
+        drink.title, 
+        req.userId 
+    ]
+    )
+        .then(result => {                                    
+            res.json(result.rows[0]);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
+            });
+        });
+});
+
+app.delete('/api/me/favorites/:id', (req, res) => {
+    client.query(`
+        DELETE FROM favorites
+        WHERE id = $1
+        AND   user_id = $2;
+    `,
+    [req.params.id, req.userId]
+    )
+        .then(() => {
+            res.json({ removed: true });
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
+            });
+        });
+});
+
+
 
 // Start the server
 app.listen(PORT, () => {
