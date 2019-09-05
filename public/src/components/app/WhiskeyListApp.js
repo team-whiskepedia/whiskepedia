@@ -3,6 +3,7 @@ import { Header } from './Header.js';
 import WhiskeyList from '../whiskeys/WhiskeyList.js';
 import { getWhiskeys, getFlavors } from '../../services/whiskey-api.js';
 import { SearchContainer } from './SearchContainer.js';
+import hashStorage from '../../services/hash-storage.js';
 
 class WhiskeyListApp extends Component {
 
@@ -17,11 +18,22 @@ class WhiskeyListApp extends Component {
         const list = new WhiskeyList({ whiskeys: [] });
         main.appendChild(list.renderDOM());
 
-        getWhiskeys()
-            .then(whiskeys => {
-                list.update({ whiskeys });
-            });
+        function loadWhiskeys() {
+            const options = hashStorage.get();
+            getWhiskeys(options)
+                .then(whiskeys => {
+                    list.update({ 
+                        whiskeys: whiskeys,
+                        sort: options.sort || '' 
+                    });
+                });
+        }
 
+        loadWhiskeys();
+        window.addEventListener('hashchange', () => {
+            loadWhiskeys();
+            searchContainer.update();
+        });
 
         getFlavors()
             .then(flavors => {
@@ -33,7 +45,7 @@ class WhiskeyListApp extends Component {
         return /*html*/`
             <div>
                 <!-- header goes here -->
-                <main></main>
+                <main class="responsive-main"></main>
             </div>
         `;
     }

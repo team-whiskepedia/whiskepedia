@@ -18,27 +18,12 @@ body {
 }
 /*Desktop*/
 @media only screen and (min-width: 760px) {
-    main {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        grid-auto-rows: 1;
-        grid-template-areas: 
-            "sd whiskey"
-    }
-    #search-pane {
-        grid-area: sd;
-    }
-    
     .hide-lg {
         display: none;
     }
 }
 /*mobile*/
 @media only screen and (max-width: 760px) {
-    main{
-        display: grid;
-        grid-template-columns: 1fr;
-    }
     .hide-sm {
         display: none;
     }
