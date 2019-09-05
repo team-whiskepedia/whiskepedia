@@ -36,7 +36,7 @@ getAllWhiskeys()
                     return client.query(`
                         INSERT INTO whiskeys (id, title, list_img_url, detail_img_url, region, rating, price, description, flavor_1, flavor_2, flavor_3, flavor_4, flavor_5, flavor_names, flavor_counts, flavor_counts_normalized)
                         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, ${flavorNames}, ${flavorCounts}, ${flavorCountsNormalized});
-                        `, [whiskey.id, whiskey.title, whiskey.list_img_url, whiskey.detail_img_url, whiskey.region, whiskey.rating, whiskey.price, whiskey.description, whiskey.tags[0].title, whiskey.tags[1].title, whiskey.tags[2].title, whiskey.tags[3].title, whiskey.tags[4].title] );
+                        `, [whiskey.id, whiskey.title, whiskey.list_img_url, whiskey.detail_img_url, whiskey.region, whiskey.rating, whiskey.price, whiskey.description, whiskey.tags[0].title, whiskey.tags[1].title, whiskey.tags[2].title, whiskey.tags[3].title, whiskey.tags[4].title]);
                 }
             })
         )

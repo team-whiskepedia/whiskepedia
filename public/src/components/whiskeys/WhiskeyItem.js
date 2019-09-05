@@ -40,11 +40,35 @@ class WhiskeyItem extends Component {
                     return acc;
                 }, 0);
             });
-            console.log(chartCategories);
-            console.log(chartMagnitudes);
+
+            const flavorsChart = li.querySelector('canvas').getContext('2d');
+            // eslint-disable-next-line
+            let chart = new Chart(flavorsChart, {
+                type: 'radar',
+                data: {
+                    labels: chartCategories,
+                    datasets: [{
+                        label: 'Flavor Profile',
+                        borderColor: 'rgba(152, 210, 235, 0.9)',
+                        borderWidth: 1,
+                        data: chartMagnitudes,
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false,
+                    },
+                    scale: {
+                        ticks: {
+                            display: false,
+                        }
+                    }
+                }
+            });
+
         }
 
-        createChart(flavorCategories, whiskey);
+        createChart(flavorCategories, whiskey);        
     }
 
     renderHTML() {
@@ -60,10 +84,13 @@ class WhiskeyItem extends Component {
             <div class="img-container">
                 <img class="list-img" src="${whiskey.detail_img_url}" alt=""/>
                 <div className="details-container">
-                    <p><span class="whiskey-details">Region:</span> ${whiskey.region}</p>
-                    <p><span class="whiskey-details">Rating:</span> ${whiskey.rating}</p>
-                    <p><span class="whiskey-details">Price:</span> $${whiskey.price} /bottle</p>
-                    <p><span class="whiskey-details">Flavors:</span> ${whiskey.flavor_1}, ${whiskey.flavor_2}, ${whiskey.flavor_3}, ${whiskey.flavor_4}, ${whiskey.flavor_5}</p>
+                    <p class="details"><span class="whiskey-details">Region:</span> ${whiskey.region}</p>
+                    <p class="details"><span class="whiskey-details">Rating:</span> ${whiskey.rating}</p>
+                    <p class="details"><span class="whiskey-details">Price:</span> $${whiskey.price} /bottle</p>
+                    <p class="details"><span class="whiskey-details">Flavors:</span> ${whiskey.flavor_1}, ${whiskey.flavor_2}, ${whiskey.flavor_3}, ${whiskey.flavor_4}, ${whiskey.flavor_5}</p>
+                </div>
+                <div class="chart-container">
+                    <canvas></canvas>
                 </div>
             </div>
         </li>
