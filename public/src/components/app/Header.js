@@ -60,7 +60,7 @@ export class Header extends Component {
                     <a><i class="material-icons">menu</i></a>
                     <ul class='mobile-nav-links'>
                         <li><a href="/browse.html">Browse</a></li>
-                        <li class="bottles-mobile no-display"><a href="#">My Bottles</a></li>
+                        <li class="bottles-mobile no-display"><a href="/mybottles.html">My Bottles</a></li>
                         <li class="log-in-mobile"><a href="/auth.html">Login</a></li>
                         <li class="log-out-mobile no-display"><a href="/auth.html">Logout</a></li>
                     </ul>
@@ -75,7 +75,7 @@ export class Header extends Component {
                     </div>
                     <ul class="flex">
                         <li><a href="/browse.html">Browse</a></li>
-                        <li class="bottles no-display"><a href="#">My Bottles</a></li>
+                        <li class="bottles no-display"><a href="/mybottles.html">My Bottles</a></li>
                         <li class="log-in"><a class="log-in" href="/auth.html">Login</a></li>
                         <li class="log-out no-display"><a href="/auth.html">Logout</a></li>
                     </ul>

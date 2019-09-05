@@ -9,6 +9,7 @@ const client = require('./lib/client');
 
 // Auth
 const ensureAuth = require('./lib/auth/ensure-auth');
+const getUser = require('./lib/auth/get-user');
 const createAuthRoutes = require('./lib/auth/create-auth-routes');
 const authRoutes = createAuthRoutes({
     selectUser(email) {
@@ -42,17 +43,19 @@ app.use(express.json()); // enable reading incoming json data
 // setup authentication routes
 app.use('/api/auth', authRoutes);
 
-app.get('/api/whiskeys', (req, res) => {
-    const orderByDirective = 
-        (req.query.sort === 'flavor-a-z') ? `ORDER BY flavor_1 ASC` :
-            (req.query.sort === 'flavor-z-a') ? `ORDER BY flavor_1 DESC` :
-                (req.query.sort === 'name-a-z') ? `ORDER BY title ASC` :
-                    (req.query.sort === 'name-z-a') ? `ORDER BY title ASC` :
-                        (req.query.sort === 'rating-high-low') ? `ORDER BY rating DESC` :
-                            (req.query.sort === 'price-high-low') ? `ORDER BY price DESC` :
-                                (req.query.sort === 'price-low-high') ? `ORDER BY price ASC` :
-                                    ``;
+const sortMap = {
+    'flavor-a-z': `ORDER BY flavor_1 ASC`,
+    'flavor-z-a': `ORDER BY flavor_1 DESC`,
+    'name-a-z': `ORDER BY title ASC`,
+    'name-z-a': `ORDER BY title DESC`,
+    'rating-high-low': `ORDER BY rating DESC`,
+    'price-high-low': `ORDER BY price DESC`,
+    'price-low-high': `ORDER BY price ASC`,
+};
 
+app.get('/api/whiskeys', getUser, (req, res) => {
+    const orderByDirective = sortMap[req.query.sort] || '';
+       
     const flavorIdArray = req.query.flavors.split(',');
     const flavorDirectives = flavorIdArray.map(id => {
         const [yesNo, flavor] = id.split('-');
@@ -73,15 +76,22 @@ app.get('/api/whiskeys', (req, res) => {
             flavor_2,
             flavor_3,
             flavor_4,
-            flavor_5,
+            flavor_5,			
+            COALESCE(f.is_favorite, FALSE) as "isFavorite",
             description
-        FROM whiskeys
+        FROM whiskeys w
+		LEFT JOIN (
+            SELECT whiskey_id, is_favorite
+            FROM favorites
+            WHERE user_id = $2
+        ) f
+       	ON w.id = f.whiskey_id
         WHERE title ILIKE '%' || $1 || '%'
         ${flavorDirectives.join(` `)}
         ${orderByDirective}
         LIMIT 100;
     `,
-    [req.query.search])
+    [req.query.search, req.userId])
         .then(result => {
             res.json(result.rows);
         })
@@ -98,8 +108,8 @@ app.get('/api/flavors', (req, res) => {
             name,
             category,
             broad_category AS "broadCategory"
-        FROM flavors;
-    `)
+            FROM flavors;
+            `)
         .then(result => {
             res.json(result.rows);
         })
@@ -110,8 +120,71 @@ app.get('/api/flavors', (req, res) => {
         });
 });
 
-// everything that starts with "/api" below here requires an auth token!
+ // everything that starts with "/api" below here requires an auth token!
 app.use('/api', ensureAuth);
+
+// User Favorites       
+app.get('/api/me/favorites', (req, res) => {
+    
+    client.query(`
+        SELECT  f.whiskey_id,
+                f.user_id,
+                f.is_favorite as "isFavorite",
+                w.*
+        FROM favorites f
+        JOIN whiskeys w
+        ON f.whiskey_id = w.id
+        WHERE f.user_id = $1;
+        `, [req.userId]
+    )
+        .then(result => {
+            res.json(result.rows);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
+            });
+        });
+});
+app.post('/api/me/favorites', (req, res) => {
+    const drink = req.body;
+    client.query(`
+        INSERT INTO favorites (title, whiskey_id, user_id)
+        VALUES ($1, $2, $3)
+        RETURNING title, whiskey_id as "whiskeyId", user_id as "userId";
+    `,
+    [drink.title, drink.id, req.userId]
+    )
+        .then(result => {                                    
+            res.json(result.rows[0]);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
+            });
+        });
+});
+
+app.delete('/api/me/favorites/:id', (req, res) => {
+    console.log(req.params.id);
+    client.query(`
+        DELETE FROM favorites
+        WHERE whiskey_id = $1
+        AND   user_id = $2;
+    `,
+    [req.params.id, req.userId]
+    )
+        .then(() => {
+            res.json({ removed: true });
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
+            });
+        });
+});
+
+
 
 // Start the server
 app.listen(PORT, () => {

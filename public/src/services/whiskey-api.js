@@ -59,3 +59,23 @@ export function getFlavors() {
     const url = `${URL}/flavors`;
     return fetchWithError(url);
 }
+export function getFavorites() {
+    const url = `${URL}/me/favorites`;
+    return fetchWithError(url);
+}
+export function makeFavorite(whiskey) {
+    const url = `${URL}/me/favorites`;
+    return fetchWithError(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(whiskey)        
+    });  
+}
+export function removeFavorite(whiskeyID) {
+    const url = `${URL}/me/favorites/${whiskeyID}`;
+    return fetchWithError(url, {
+        method: 'DELETE',
+    });    
+}
