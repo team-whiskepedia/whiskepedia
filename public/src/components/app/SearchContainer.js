@@ -23,14 +23,14 @@ export class SearchContainer extends Component {
             event.preventDefault();
             hashStorage.set({ search: searchInput.value });
         });
-
+        window.addEventListener('hashchange', () => searchInput.value = hashStorage.get().search || '');
         
+
         let radioElements = [];
         const searchPane = dom.querySelector('#search-pane');
+
         flavorsByBroadCategory.forEach(category => {
-            const searchCategory = new SearchCategory({ 
-                category: category
-            }); 
+            const searchCategory = new SearchCategory({ category: category }); 
             const categoryDom = searchPane.appendChild(searchCategory.renderDOM());
 
             radioElements = [
@@ -38,15 +38,17 @@ export class SearchContainer extends Component {
                 ...categoryDom.querySelectorAll('.radio-input.yes'),
                 ...categoryDom.querySelectorAll('.radio-input.no')
             ];
+
             categoryDom.querySelector('button').addEventListener('click', () => applyFlavorFilters());
         });
 
         function applyFlavorFilters() {
-            const flavorString = radioElements.filter(radio => radio.checked).map(radio => radio.id).join(',');
+            const flavorString = radioElements
+                .filter(radio => radio.checked)
+                .map(radio => radio.id)
+                .join(',');
             hashStorage.set({ flavors: flavorString });
         }
-        
-        window.addEventListener('hashchange', () => searchInput.value = hashStorage.get().search || '');
     }
 
     renderHTML() {

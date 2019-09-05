@@ -3,17 +3,21 @@ import hashStorage from '../../services/hash-storage.js';
 
 export class SearchCategory extends Component {
 
-    onRender(dom) {
+    onRender(dom) {  
         const collapsibleMenuCheckbox = dom.querySelector(`#filter-by-${this.props.category.category}-container`);
-        
-        const flavors = hashStorage.get().flavors;
-        flavors.split(',').forEach(id => {
-            const flavorRadio = dom.querySelector(`#${id}`);
-            if(flavorRadio) {
-                flavorRadio.checked = true;
-                collapsibleMenuCheckbox.checked = true;
-            }
-        });
+
+        const hashedFlavors = hashStorage.get().flavors || '';
+        if(hashedFlavors) {
+            hashedFlavors
+                .split(',')
+                .forEach(id => {
+                    const flavorRadio = dom.querySelector(`#${id}`);
+                    if(flavorRadio) {
+                        flavorRadio.checked = true;
+                        collapsibleMenuCheckbox.checked = true;
+                    }
+                });
+        }
     }
 
     renderHTML() {
