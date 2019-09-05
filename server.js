@@ -74,7 +74,10 @@ app.get('/api/whiskeys', (req, res) => {
             flavor_3,
             flavor_4,
             flavor_5,
-            description
+            description,
+            flavor_names AS "flavorNames",
+            flavor_counts AS "flavorCounts",
+            flavor_counts_normalized AS "flavorCountsNormalized"
         FROM whiskeys
         WHERE title ILIKE '%' || $1 || '%'
         ${flavorDirectives.join(` `)}

@@ -5,7 +5,9 @@ import store from '../../services/store.js';
 class WhiskeyItem extends Component {
     onRender(li) {
         const whiskey = this.props.whiskey;
+        const flavorCategories = this.props.flavorCategories;
         const removedFavorite = this.props.removedFavorite;
+
         const favoriteButton = li.querySelector('.favorite-star');
         favoriteButton.addEventListener('click', () => {
             whiskey.isFavorite = !whiskey.isFavorite;
@@ -26,6 +28,23 @@ class WhiskeyItem extends Component {
             }
             favoriteButton.classList.toggle('is-favorite');
         });
+
+        function createChart(flavorCategories, whiskey) {
+            const chartCategories = flavorCategories.map((item) => item.category);
+            const chartMagnitudes = flavorCategories.map((item) => {
+                const categoryFlavorsStr = item.flavors.join(' ');
+                return whiskey.flavorCountsNormalized.reduce((acc, count, i) => {
+                    if(categoryFlavorsStr.includes(whiskey.flavorNames[i])) {
+                        acc += count;
+                    }
+                    return acc;
+                }, 0);
+            });
+            console.log(chartCategories);
+            console.log(chartMagnitudes);
+        }
+
+        createChart(flavorCategories, whiskey);
     }
 
     renderHTML() {
