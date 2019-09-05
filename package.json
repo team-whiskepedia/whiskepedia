@@ -29,6 +29,7 @@
   "homepage": "https://github.com/team-whiskepedia/whiskepedia#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "chart.js": "^2.8.0",
     "cors": "^2.8.5",
     "dotenv": "^8.1.0",
     "esm": "^3.2.25",
