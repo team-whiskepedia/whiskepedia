@@ -1,0 +1,122 @@
+.header {
+    display: flex;
+    height: 11vh;
+    max-height: 100px;
+    margin: 0px;
+}
+.dark {
+    background-color: #0F0D00;
+    margin: 7px;
+    outline-offset: 2px;
+    outline: 2px outset #0F0D00;
+}
+
+.logo-container {
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+.logo-container img {
+    height: 80%;
+    opacity: .75;
+    margin-left: 5%;
+    margin-right: 0;
+}
+.logo {
+    margin-left: 5%;
+    letter-spacing: 5px;
+    font-size: calc(2.7em + 1.8vw);
+    font-weight: 600;
+    font-family: 'Tulpen One', cursive;
+    color: #A0A0A0;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+.mobile-nav {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+.mobile-nav a {
+    margin-left: 20px;
+    color: #E8EBE4;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+}
+.mobile-nav ul {
+    width: 30vw;
+    position: absolute;
+    top: calc(100% + 15px);
+    left: -50vw;
+    padding: 0;
+    list-style: none;
+    background-color: #0F0D00;
+    border-radius: 5px;
+    transition: all;
+    transition-duration: 350ms;
+    transition-timing-function: ease-in-out;
+}
+.mobile-nav ul.displayed {
+    left: -20px;
+}
+.mobile-nav li {
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 25px;
+    padding-bottom: 10px;
+    padding-right: 15px;
+    background-color: #0F0D00;
+    transition: all;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in;
+}
+.mobile-nav li:hover, .mobile-nav li:active {
+    background-color: #36393B;
+}
+
+.desktop-nav {
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+}
+.desktop-nav a, .desktop-nav span {
+    color: #A0A0A0;
+    text-decoration: none;
+}
+.desktop-nav ul {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.desktop-nav li {
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 100%;
+    transition: all;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in;
+}
+.desktop-nav li a {
+    position: relative;
+    top: 40%;
+} 
+.desktop-nav li:hover {
+    background-color: #36393B;
+}
+.desktop-nav div {
+    text-align: center;
+    opacity: .50;
+    user-select: none;
+}
+.no-display {
+    display: none;
+}
+

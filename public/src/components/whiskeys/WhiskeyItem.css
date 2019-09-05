@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Livvic&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Anton|Bai+Jamjuree|Fredericka+the+Great|Gabriela|Julius+Sans+One|Lily+Script+One|Sarala|Signika+Negative|Tulpen+One&display=swap');
+
+.whiskey-title {
+    font-size: 2em;
+    text-align: center;
+    font-family: 'Tulpen One', cursive;
+    letter-spacing: .08em;
+}
+
+.whiskey-details {
+    font-weight: bold;
+}
+
+.title-container {
+    background-color: #0F0D00;
+    width: 100%;
+    color: #A0A0A0;
+}
+
+.details-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.whiskey-items { 
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    list-style: none;
+    height: 280px;
+    width: 100%;
+    background-color: #E8EBE4;
+    border: 1px solid #A0A0A0;
+}
+
+.img-container {
+    height: 60%;
+    display: flex;
+}
+
+img {
+    height: 100%;
+    object-fit: contain;
+    padding: 15px 10px;
+}

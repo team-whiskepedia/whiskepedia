@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Anton|Bai+Jamjuree|Fredericka+the+Great|Gabriela|Julius+Sans+One|Lily+Script+One|Sarala|Signika+Negative|Tulpen+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Monsieur+La+Doulaise&display=swap');
+
+/* .one {
+    font-family: 'Monsieur La Doulaise', cursive;
+    font-size: 4em;
+} */
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #DDD5D0;
+    background-image: url('../../assets/whiskey-wall.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/*Desktop*/
+@media only screen and (min-width: 760px) {
+    .hide-lg {
+        display: none;
+    }
+}
+/*mobile*/
+@media only screen and (max-width: 760px) {
+    .hide-sm {
+        display: none;
+    }
+}
+
+
+/* This is needed for some mobile phones to display the Google Icon font properly
+    Fonts used with this class are coutesy of Materialize library
+     */
+.material-icons {
+    text-rendering: optimizeLegibility;
+    -webkit-font-feature-settings: 'liga';
+    -moz-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+}
+  
+.hidden {
+    display: none;
+}
+
+.flex-middle {
+    display: flex;
+    justify-content: middle;
+}
