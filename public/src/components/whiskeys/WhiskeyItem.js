@@ -1,6 +1,33 @@
 import Component from '../Component.js';
 
 class WhiskeyItem extends Component {
+    onRender(dom) {
+        const dumbChart = dom.querySelector('canvas').getContext('2d');
+        // eslint-disable-next-line no-undef
+        let chart = new Chart(dumbChart, {
+            type: 'radar',
+            data: {
+                labels: ['Sweet', 'Cereal', 'Earthy', 'Vanilla', 'Woody'],
+                datasets: [{
+                    label: 'Flavor Profile',
+                    borderColor: 'rgb(152, 210, 235)',
+                    borderWidth: 1,
+                    data: [22, 65, 3, 19, 28],
+                }]
+            },
+            options: {
+                legend: {
+                    display: false,
+                },
+                scale: {
+                    display: true,
+                }
+            }
+        });
+
+        // chartContainer.appendChild(canvas.canvas.outerHTML);
+    }
+
     renderHTML() {
         const whiskey = this.props.whiskey;
 
@@ -17,6 +44,9 @@ class WhiskeyItem extends Component {
                     <p><span class="whiskey-details">Price:</span> $${whiskey.price} /bottle</p>
                     <p><span class="whiskey-details">Flavors:</span> ${whiskey.flavor_1}, ${whiskey.flavor_2}, ${whiskey.flavor_3}, ${whiskey.flavor_4}, ${whiskey.flavor_5}</p>
                 </div>
+                <div class="chart-container">
+                <canvas></canvas>
+              </div>
             </div>
         </li>
         `;
