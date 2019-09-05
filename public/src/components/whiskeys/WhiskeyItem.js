@@ -7,7 +7,6 @@ class WhiskeyItem extends Component {
         const whiskey = this.props.whiskey;
         const removedFavorite = this.props.removedFavorite;
         const favoriteButton = li.querySelector('.favorite-star');
-       
         favoriteButton.addEventListener('click', () => {
             whiskey.isFavorite = !whiskey.isFavorite;
             if(!store.hasToken()) {
@@ -19,8 +18,6 @@ class WhiskeyItem extends Component {
             }
             else {
                 removeFavorite(whiskey.id);
-                console.log(whiskey.id);
-
                 setTimeout(() => {
                     if(removedFavorite) {
                         this.rootElement.remove();
