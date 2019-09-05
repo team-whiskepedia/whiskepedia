@@ -27,6 +27,7 @@ function fetchWithError(url, options) {
 export function getWhiskeys(options) {  
     const searchParams = new URLSearchParams();
     searchParams.set('search', options.search || '');
+    searchParams.set('sort', options.sort || '');
     const url = `${URL}/whiskeys?${searchParams.toString()}`;
     return fetchWithError(url);
 }

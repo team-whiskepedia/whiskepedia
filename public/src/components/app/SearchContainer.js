@@ -34,7 +34,7 @@ export class SearchContainer extends Component {
             hashStorage.set({ search: searchInput.value });
         });
 
-        window.addEventListener('hashchange', () => searchInput.value = hashStorage.get().search || '');
+//        window.addEventListener('hashchange', () => searchInput.value = hashStorage.get().search || '');
     }
 
     renderHTML() {
