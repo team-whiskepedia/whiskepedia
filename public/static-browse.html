@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles/reset.css">
+    <link rel="stylesheet" href="src/components/app/header.css">
+    <link rel="stylesheet" href="src/components/app/search.css">
+    <link rel="stylesheet" href="src/styles/main.css">
+</head>
+<body>
+    <header class="header dark">
+        <nav class="mobile-nav hide-lg">
+            <a><i class="material-icons">menu</i></a>
+            <ul>
+                <li><a href="#">Browse</a></li>
+                <li><a href="#">My Bottles</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+        <div class="logo-container">
+            <img class="hide-sm" src="assets/woodford.png" alt="logo image">
+            <a class="logo" href="index.html">Whiskepedia</a>
+        </div>
+        <nav class="desktop-nav hide-sm">
+            <div>
+                <a href="#">Logged in as [NAME]</a>
+            </div>
+            <ul class="flex">
+                <li><a href="#">Browse</a></li>
+                <li><a href="#">My Bottles</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="grid-cell">
+            <div id="search-pane" class="top-sm left-lg">
+                <h3><i class="material-icons">tune</i><span> Search</span></h3>
+                <div class="collapsible-menu">
+                    <input type="checkbox" checked id="search-container">
+                    <label for="search-container"><i class="material-icons rotatable">details</i><span> By Name</span></label>
+                    <form class="menu-content">
+                        <input class="text-input grow" type="search" name="search-by-name" placeholder="Search by Whisky Name">
+                        <i class="btn round material-icons">search</i>
+                    </form>
+                </div>
+                <div class="collapsible-menu hidden">
+                    <input type="checkbox" id="filter-by-rating-container">
+                    <label for="filter-by-rating-container"><i class="material-icons rotatable">details</i><span> By Rating</span></label>
+                    <div class="menu-content">
+                        <input class="range grow" type="range" name="filter-by-rating">
+                        <i class="btn round material-icons">tune</i>
+                    </div>
+                </div>
+                <div class="collapsible-menu">
+                    <input type="checkbox" id="filter-by-taste-container">
+                    <label for="filter-by-taste-container"><i class="material-icons rotatable">details</i><span> By Taste</span></label>
+                    <div class="menu-content">
+                        <ul>
+                            <li>
+                                <input type="radio" class="radio-input yes" value="ytaste1" name="radio-taste1" id="yes-taste1"/><label for="yes-taste1"><span>Y</span></label>
+                                <input type="radio" checked class="radio-input" value="0" name="radio-taste1" id="taste1"/><label for="taste1"> < Taste 1 > </label>
+                                <input type="radio" class="radio-input no" value="ntaste1" name="radio-taste1"  id="no-taste1"/><label for="no-taste1"><span>N</span></label>
+                            </li>
+                            <li>
+                                <input type="radio" class="radio-input yes" value="-1" name="radio-taste2" id="yes-taste2"/><label for="yes-taste2"><span>Y</span></label>
+                                <input type="radio" checked class="radio-input" value="0" name="radio-taste2" id="taste2"/><label for="taste2"> < Taste 2 > </label>
+                                <input type="radio" class="radio-input no" value="1" name="radio-taste2"  id="no-taste2"/><label for="no-taste2"><span>N</span></label>
+                            </li>
+                            <li>
+                                <input type="radio" class="radio-input yes" value="-1" name="radio-taste3" id="yes-taste3"/><label for="yes-taste3"><span>Y</span></label>
+                                <input type="radio" checked class="radio-input" value="0" name="radio-taste3" id="taste3"/><label for="taste3"> < Taste 3 > </label>
+                                <input type="radio" class="radio-input no" value="1" name="radio-taste3"  id="no-taste3"/><label for="no-taste3"><span>N</span></label>
+                            </li>
+                        </ul>
+                        <i class="btn round material-icons" id="submit-filter-by-taste">tune</i>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{
+  "name": "whiskepedia",
+  "version": "1.0.0",
+  "description": "**Authors**: Dave Trost (DaveTrost @ github), Donna Lambert (Sanvean74 @ github), John Nelson (john4850 @ github)\r **Version**: 2.0.0 (increment the patch/fix version number if you make more commits past your first submission)",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "cd public && npm i esm jsdom && npx qunit test/index.js",
+    "start": "node server.js",
+    "start:watch": "nodemon server.js --ignore public",
+    "create-tables": "node data/create-tables.js",
+    "drop-tables": "node data/drop-tables.js",
+    "load-flavors": "node data/load-flavors-seed-data.js",
+    "load-whiskeys": "node data/load-whiskeys-seed-data.js",
+    "recreate-tables": "npm run drop-tables && npm run create-tables",
+    "setup-db": "npm run recreate-tables && npm run load-flavors && npm run load-whiskeys"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/team-whiskepedia/whiskepedia.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/team-whiskepedia/whiskepedia/issues"
+  },
+  "homepage": "https://github.com/team-whiskepedia/whiskepedia#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "jsdom": "^15.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.9.1",
+    "pg": "^7.12.1",
+    "superagent": "^5.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.3.0",
+    "nodemon": "^1.19.1"
+  }
+}
