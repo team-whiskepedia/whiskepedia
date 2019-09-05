@@ -16,25 +16,39 @@ export class SearchContainer extends Component {
             return broadCategories;
         }, []);
         flavorsByBroadCategory.sort(objA => objA.category.toLowerCase() === 'tastes' ? -1 : 1);
-        
-        const searchPane = dom.querySelector('#search-pane');
-        flavorsByBroadCategory.forEach(category => {
-            const searchCategory = new SearchCategory({ 
-                category: category,
-                //onUpdate: this.props.onUpdate,
-                //onRemove: this.props.onRemove,
-            }); 
-            searchPane.appendChild(searchCategory.renderDOM());
-        });
+
 
         const searchInput = dom.querySelector('input[type=search]');
         dom.querySelector('form').addEventListener('submit', (event) => {
             event.preventDefault();
-
             hashStorage.set({ search: searchInput.value });
         });
-
         window.addEventListener('hashchange', () => searchInput.value = hashStorage.get().search || '');
+        
+
+        let radioElements = [];
+        const searchPane = dom.querySelector('#search-pane');
+
+        flavorsByBroadCategory.forEach(category => {
+            const searchCategory = new SearchCategory({ category: category }); 
+            const categoryDom = searchPane.appendChild(searchCategory.renderDOM());
+
+            radioElements = [
+                ...radioElements,
+                ...categoryDom.querySelectorAll('.radio-input.yes'),
+                ...categoryDom.querySelectorAll('.radio-input.no')
+            ];
+
+            categoryDom.querySelector('button').addEventListener('click', () => applyFlavorFilters());
+        });
+
+        function applyFlavorFilters() {
+            const flavorString = radioElements
+                .filter(radio => radio.checked)
+                .map(radio => radio.id)
+                .join(',');
+            hashStorage.set({ flavors: flavorString });
+        }
     }
 
     renderHTML() {
@@ -55,7 +69,7 @@ export class SearchContainer extends Component {
                         <label for="filter-by-rating-container"><i class="material-icons rotatable">details</i><span> By Rating</span></label>
                         <div class="menu-content">
                             <input class="range grow" type="range" name="filter-by-rating">
-                            <i class="btn round material-icons">tune</i>
+                            <button class="btn round material-icons">tune</button>
                         </div>
                     </div>
                 </div>

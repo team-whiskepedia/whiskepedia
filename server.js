@@ -21,7 +21,6 @@ const authRoutes = createAuthRoutes({
         ).then(result => result.rows[0]);
     },
     insertUser(user, hash) {
-        console.log(user);
         return client.query(`
             INSERT into users (email, hash, display_name)
             VALUES ($1, $2, $3)
@@ -44,7 +43,23 @@ app.use(express.json()); // enable reading incoming json data
 app.use('/api/auth', authRoutes);
 
 app.get('/api/whiskeys', (req, res) => {
-    console.log(req.query.search);
+    const orderByDirective = 
+        (req.query.sort === 'flavor-a-z') ? `ORDER BY flavor_1 ASC` :
+            (req.query.sort === 'flavor-z-a') ? `ORDER BY flavor_1 DESC` :
+                (req.query.sort === 'name-a-z') ? `ORDER BY title ASC` :
+                    (req.query.sort === 'name-z-a') ? `ORDER BY title ASC` :
+                        (req.query.sort === 'rating-high-low') ? `ORDER BY rating DESC` :
+                            (req.query.sort === 'price-high-low') ? `ORDER BY price DESC` :
+                                (req.query.sort === 'price-low-high') ? `ORDER BY price ASC` :
+                                    ``;
+
+    const flavorIdArray = req.query.flavors.split(',');
+    const flavorDirectives = flavorIdArray.map(id => {
+        const [yesNo, flavor] = id.split('-');
+        return (yesNo === 'yes') ?
+            `AND (flavor_1='${flavor}' OR flavor_2='${flavor}' OR flavor_3='${flavor}' OR flavor_4='${flavor}' OR flavor_5='${flavor}')`
+            : `AND (flavor_1!='${flavor}' AND flavor_2!='${flavor}' AND flavor_3!='${flavor}' AND flavor_4!='${flavor}' AND flavor_5!='${flavor}')`;
+    });
     client.query(`
         SELECT
             id,
@@ -57,9 +72,13 @@ app.get('/api/whiskeys', (req, res) => {
             flavor_1,
             flavor_2,
             flavor_3,
+            flavor_4,
+            flavor_5,
             description
         FROM whiskeys
         WHERE title ILIKE '%' || $1 || '%'
+        ${flavorDirectives.join(` `)}
+        ${orderByDirective}
         LIMIT 100;
     `,
     [req.query.search])

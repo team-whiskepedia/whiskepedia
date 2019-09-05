@@ -137,7 +137,6 @@
 .radio-input:checked + label {
     border: none;
     border-radius: 5px;
-    background-color: #A0A0A0;
 }
 .radio-input.yes + label, .radio-input.no + label {
     background-color: transparent;
