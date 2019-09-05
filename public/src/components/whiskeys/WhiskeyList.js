@@ -5,6 +5,7 @@ import { SortPaginate } from '../app/SortPaginate.js';
 class WhiskeyList extends Component {
     onRender(dom) {
         const whiskeys = this.props.whiskeys;
+        const flavorCategories = this.props.flavorCategories;
 
         const sortPaginateBar = new SortPaginate({ sort: this.props.sort || '' });
         dom.prepend(sortPaginateBar.renderDOM());
@@ -14,13 +15,9 @@ class WhiskeyList extends Component {
         whiskeys.forEach(whiskey => {
             const props = { 
                 whiskey: whiskey, 
+                flavorCategories: flavorCategories,
                 removedFavorite: this.props.removedFavorite
             };
-            // favorites.forEach(favorite => {
-            //     if(whiskey.id === favorite.whiskey_id) {
-            //         whiskey.isFavorite = true;
-            //     }    
-            // });
             const whiskeyItem = new WhiskeyItem(props);
             const whiskeyItemDOM = whiskeyItem.renderDOM();
             listArea.appendChild(whiskeyItemDOM);

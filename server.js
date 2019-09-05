@@ -72,6 +72,9 @@ app.get('/api/whiskeys', getUser, (req, res) => {
             region,
             rating,
             price,
+            flavor_names AS "flavorNames",
+            flavor_counts AS "flavorCounts",
+            flavor_counts_normalized AS "flavorCountsNormalized",
             flavor_1,
             flavor_2,
             flavor_3,
@@ -80,7 +83,7 @@ app.get('/api/whiskeys', getUser, (req, res) => {
             COALESCE(f.is_favorite, FALSE) as "isFavorite",
             description
         FROM whiskeys w
-		LEFT JOIN (
+    		LEFT JOIN (
             SELECT whiskey_id, is_favorite
             FROM favorites
             WHERE user_id = $2

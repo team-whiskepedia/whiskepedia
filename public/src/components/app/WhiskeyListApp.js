@@ -15,8 +15,24 @@ class WhiskeyListApp extends Component {
         
         const searchContainer = new SearchContainer({ flavors: [] });
         main.appendChild(searchContainer.renderDOM());
-        const list = new WhiskeyList({ whiskeys: [] });
+        const list = new WhiskeyList({ whiskeys: [], flavors: [] });
         main.appendChild(list.renderDOM());
+
+        getFlavors()
+            .then(flavors => {
+                searchContainer.update({ flavors });
+                const categoriesList = flavors.reduce((categories, flavor) => {
+                    const existingIndex = categories.findIndex((item) => item.category === flavor.category);
+                    if(existingIndex >= 0) {
+                        categories[existingIndex].flavors.push(flavor.name);
+                    } 
+                    else if(flavor.category !== 'IGNORE') {
+                        categories.push({ category: flavor.category, flavors: [flavor.name] });
+                    }
+                    return categories;
+                }, []);
+                list.update({ flavorCategories: categoriesList });
+            });
 
         function loadWhiskeys() {
             const options = hashStorage.get();
@@ -35,10 +51,6 @@ class WhiskeyListApp extends Component {
             searchContainer.update();
         });
 
-        getFlavors()
-            .then(flavors => {
-                searchContainer.update({ flavors });
-            });
     }
 
     renderHTML() {

@@ -13,6 +13,17 @@
     line-height: 1.4em;
 }
 
+.details-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.details {
+    max-width: 80%;
+    font-size: .8em;
+}
+
 .title-container {
     display: flex;
     flex-direction: column;
@@ -25,11 +36,14 @@
     margin-bottom: 15px;
 }
 
-.details-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    
+canvas {
+    width: 100%;
+    height:100%;
+}
+
+.chart-container {
+    width: 500px;
+    height: 500px;
 }
 
 .whiskey-items { 
