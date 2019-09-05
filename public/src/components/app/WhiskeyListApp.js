@@ -22,12 +22,18 @@ class WhiskeyListApp extends Component {
             const options = hashStorage.get();
             getWhiskeys(options)
                 .then(whiskeys => {
-                    list.update({ whiskeys });
+                    list.update({ 
+                        whiskeys: whiskeys,
+                        sort: options.sort || '' 
+                    });
                 });
         }
 
         loadWhiskeys();
-        window.addEventListener('hashchange', () => loadWhiskeys());
+        window.addEventListener('hashchange', () => {
+            loadWhiskeys();
+            searchContainer.update();
+        });
 
         getFlavors()
             .then(flavors => {
