@@ -8,12 +8,6 @@ export class SortPaginate extends Component {
         sortInput.addEventListener('change', () => {
             hashStorage.set({ sort: sortInput.value });
         });
-
-        // window.addEventListener('hashchange', () => {
-        //     console.log(hashStorage.get());
-        //     sortInput.value = hashStorage.get().sort;
-        // });
-        //sortInput.value = 'flavor-a-z';
     }
 
     renderHTML() {

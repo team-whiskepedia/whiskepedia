@@ -20,9 +20,7 @@ export class SearchContainer extends Component {
         const searchPane = dom.querySelector('#search-pane');
         flavorsByBroadCategory.forEach(category => {
             const searchCategory = new SearchCategory({ 
-                category: category,
-                //onUpdate: this.props.onUpdate,
-                //onRemove: this.props.onRemove,
+                category: category
             }); 
             searchPane.appendChild(searchCategory.renderDOM());
         });
@@ -34,7 +32,7 @@ export class SearchContainer extends Component {
             hashStorage.set({ search: searchInput.value });
         });
 
-//        window.addEventListener('hashchange', () => searchInput.value = hashStorage.get().search || '');
+        window.addEventListener('hashchange', () => searchInput.value = hashStorage.get().search || '');
     }
 
     renderHTML() {
