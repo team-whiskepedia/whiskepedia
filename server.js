@@ -56,9 +56,9 @@ app.get('/api/whiskeys', (req, res) => {
     const flavorIdArray = req.query.flavors.split(',');
     const flavorDirectives = flavorIdArray.map(id => {
         const [yesNo, flavor] = id.split('-');
-        return (yesNo === 'yes')
-            ? `AND (flavor_1='${flavor}' OR flavor_2='${flavor}' OR flavor_3='${flavor}')`
-            : `AND (flavor_1!='${flavor}' AND flavor_2!='${flavor}' AND flavor_3!='${flavor}')`;
+        return (yesNo === 'yes') ?
+            `AND (flavor_1='${flavor}' OR flavor_2='${flavor}' OR flavor_3='${flavor}' OR flavor_4='${flavor}' OR flavor_5='${flavor}')`
+            : `AND (flavor_1!='${flavor}' AND flavor_2!='${flavor}' AND flavor_3!='${flavor}' AND flavor_4!='${flavor}' AND flavor_5!='${flavor}')`;
     });
     client.query(`
         SELECT
@@ -72,6 +72,8 @@ app.get('/api/whiskeys', (req, res) => {
             flavor_1,
             flavor_2,
             flavor_3,
+            flavor_4,
+            flavor_5,
             description
         FROM whiskeys
         WHERE title ILIKE '%' || $1 || '%'
