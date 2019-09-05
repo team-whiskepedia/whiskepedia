@@ -1,6 +1,20 @@
 import Component from '../Component.js';
+import hashStorage from '../../services/hash-storage.js';
 
 export class SearchCategory extends Component {
+
+    onRender(dom) {
+        const collapsibleMenuCheckbox = dom.querySelector(`#filter-by-${this.props.category.category}-container`);
+        
+        const flavors = hashStorage.get().flavors;
+        flavors.split(',').forEach(id => {
+            const flavorRadio = dom.querySelector(`#${id}`);
+            if(flavorRadio) {
+                flavorRadio.checked = true;
+                collapsibleMenuCheckbox.checked = true;
+            }
+        });
+    }
 
     renderHTML() {
         const categoryName = this.props.category.category;
@@ -14,7 +28,7 @@ export class SearchCategory extends Component {
             return htmlString += /*html*/ `
                 <li>
                     <input type="radio" class="radio-input yes" value="y${flavor}" name="radio-${flavor}" id="yes-${flavor}"/><label for="yes-${flavor}"><span>Y</span></label>
-                    <input type="radio" checked class="radio-input" value="0" name="radio-${flavor}" id="${flavor}"/><label for="${flavor}"> ${flavor} </label>
+                    <input type="radio" class="radio-input" value="0" name="radio-${flavor}" id="${flavor}"/><label for="${flavor}"> ${flavor} </label>
                     <input type="radio" class="radio-input no" value="n${flavor}" name="radio-${flavor}"  id="no-${flavor}"/><label for="no-${flavor}"><span>N</span></label>
                 </li>
             `;
@@ -27,7 +41,7 @@ export class SearchCategory extends Component {
                     <ul>
                         ${flavorFiltersHTML}
                     </ul>
-                    <i class="btn round material-icons" id="submit-filter-by-taste">tune</i>
+                    <button class="btn round material-icons" id="submit-filter-by-${categoryName}">tune</button>
                 </div>
             </div>
         `;

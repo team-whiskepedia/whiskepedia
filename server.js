@@ -53,12 +53,13 @@ app.get('/api/whiskeys', (req, res) => {
                                 (req.query.sort === 'price-low-high') ? `ORDER BY price ASC` :
                                     ``;
 
-    // const flavorDirectives = [
-    //     `AND (flavor_1='wood' OR flavor_2='wood' OR flavor_3='wood')`,
-    //     `AND (flavor_1='vanilla' OR flavor_2='vanilla' OR flavor_3='vanilla')`,
-    //     `AND (flavor_1!='sweet' AND flavor_2!='sweet' AND flavor_3!='sweet')`
-    // ];
-//    ${flavorDirectives.join(` `)}
+    const flavorIdArray = req.query.flavors.split(',');
+    const flavorDirectives = flavorIdArray.map(id => {
+        const [yesNo, flavor] = id.split('-');
+        return (yesNo === 'yes')
+            ? `AND (flavor_1='${flavor}' OR flavor_2='${flavor}' OR flavor_3='${flavor}')`
+            : `AND (flavor_1!='${flavor}' AND flavor_2!='${flavor}' AND flavor_3!='${flavor}')`;
+    });
     client.query(`
         SELECT
             id,
@@ -74,6 +75,7 @@ app.get('/api/whiskeys', (req, res) => {
             description
         FROM whiskeys
         WHERE title ILIKE '%' || $1 || '%'
+        ${flavorDirectives.join(` `)}
         ${orderByDirective}
         LIMIT 100;
     `,
