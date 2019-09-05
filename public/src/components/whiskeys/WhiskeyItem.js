@@ -15,7 +15,7 @@ class WhiskeyItem extends Component {
                     <p><span class="whiskey-details">Region:</span> ${whiskey.region}</p>
                     <p><span class="whiskey-details">Rating:</span> ${whiskey.rating}</p>
                     <p><span class="whiskey-details">Price:</span> $${whiskey.price} /bottle</p>
-                    <p class="flavors"><span class="whiskey-details">Flavors:</span> ${whiskey.flavor_1}, ${whiskey.flavor_2}, ${whiskey.flavor_3}</p>
+                    <p><span class="whiskey-details">Flavors:</span> ${whiskey.flavor_1}, ${whiskey.flavor_2}, ${whiskey.flavor_3}, ${whiskey.flavor_4}, ${whiskey.flavor_5}</p>
                 </div>
             </div>
         </li>
