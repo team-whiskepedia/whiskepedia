@@ -42,6 +42,10 @@ export class App extends Component {
                             <p>Or go directly to search the database</p>
                             <a href="/browse.html">Browse</a>
                         </div>
+                        <div class="row">
+                            <p>Meet our team of designers</p>
+                            <a href="/about.html">About Us</a>
+                        </div>
                     </section>
                 </main>
             </div>
