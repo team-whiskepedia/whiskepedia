@@ -4,3 +4,28 @@
 .hidden {
     display: none;
 }
+
+.auth-box {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid black;
+    max-width: 400px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+.auth-box form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    margin: auto;
+}
+.auth-box form button, .auth-box form input {
+    width: 200px;
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 0;
+
+}
