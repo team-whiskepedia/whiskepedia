@@ -25,7 +25,7 @@ class WhiskeyList extends Component {
 
     renderHTML() {
         return /*html*/`
-            <div>
+            <div class="whiskey-top-level">
                 <ul class="whiskey-container my-bottles"></ul>
             </div>
         `;

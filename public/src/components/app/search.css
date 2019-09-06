@@ -7,24 +7,18 @@
     outline: 2px outset #0F0D00;
 }
 
-/* @media only screen and (min-width: 600px) {
-    #search-pane {
-        width: 30%;
-    }
-} */
-
 #search-pane h3 {
     padding: 5px;
     padding-left: 10px;
     padding-top: 10px;
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: .6em;
+    font-size: 1.5em;
     color: #A0A0A0;
     background-color: #0F0D00;
 }
 #search-pane h3 span {
     vertical-align: 15%;
+
 }
 
 .collapsible-menu {

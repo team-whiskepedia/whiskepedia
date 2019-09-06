@@ -60,7 +60,7 @@ export class SearchContainer extends Component {
                         <input type="checkbox" checked id="search-container">
                         <label for="search-container"><i class="material-icons rotatable">details</i><span> By Name</span></label>
                         <form class="menu-content">
-                            <input class="text-input grow" type="search" name="search-by-name" placeholder="Search by Whisky Name">
+                            <input class="text-input grow" type="search" name="search-by-name" placeholder="Search by Whiskey Name">
                             <button class="btn round material-icons">search</button>
                         </form>
                     </div>

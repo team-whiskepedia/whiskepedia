@@ -2,12 +2,10 @@
 @import url('https://fonts.googleapis.com/css?family=Anton|Bai+Jamjuree|Fredericka+the+Great|Gabriela|Julius+Sans+One|Lily+Script+One|Sarala|Signika+Negative|Tulpen+One&display=swap');
 
 .whiskey-title {
-    font-size: 2em;
+    font-size: 2.2em;
     font-family: 'Tulpen One', cursive;
-    letter-spacing: .08em;
+    letter-spacing: .09em;
     text-align: center;
-    position: absolute;
-    left: 50%;
     width: 100%;
 }
 
@@ -48,8 +46,8 @@ canvas {
 .chart-container {
     margin-top: 10px;
     width: 400px;
-    height: 600px;
-    right: 70%;
+    min-width: 300px;
+    height: 100%;
 }
 
 .whiskey-items { 
@@ -99,8 +97,8 @@ img {
         display: none;
     }
     .whiskey-title {
-        left: 5%;
-        font-size: 1.2em;
+        left: 50%;
+        font-size: 1.8em;
     }
     .details {
         font-size: 1em;
