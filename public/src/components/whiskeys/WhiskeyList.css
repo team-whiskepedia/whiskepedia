@@ -1,24 +1,31 @@
 .whiskey-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(50vw, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(40vw, 1fr));
+    grid-row: 1;
     grid-gap: 15px;
     margin: 5px;
+    align-items: center;
+}
+
+.my-bottles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50vw, 1fr));
+    grid-row: 1;
+    grid-gap: 15px;
+    max-width: 80%;
+    margin: auto;
     align-items: center;
 }
 @media only screen and (max-width: 900px) {
     .whiskey-container {
         display: grid;
         grid-template-columns: 1fr;
-        /* grid-template-columns: repeat(auto-fill, minmax(35vw, 1fr)); */
-
     }
 }
 
 main.responsive-main {
     display: grid;
-    /* grid-template-columns: 1fr; */
-    grid-template-columns: repeat(auto-fill, minmax(35vw, 1fr));
-
+    grid-template-columns: 1fr;
 }
 /*Desktop*/
 @media only screen and (min-width: 760px) {
