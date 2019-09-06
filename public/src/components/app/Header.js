@@ -71,7 +71,7 @@ export class Header extends Component {
                 </div>
                 <nav class="desktop-nav hide-sm">
                     <div>
-                        <span>${userMessage}</span>
+                        <span class="user-message">${userMessage}</span>
                     </div>
                     <ul class="flex">
                         <li><a href="/browse.html">Browse</a></li>

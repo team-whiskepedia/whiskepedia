@@ -21,7 +21,10 @@ client.query(`
         flavor_3 VARCHAR(50) NOT NULL REFERENCES flavors(name),
         flavor_4 VARCHAR(50) REFERENCES flavors(name),
         flavor_5 VARCHAR(50) REFERENCES flavors(name),
-        description VARCHAR(256) NOT NULL
+        description VARCHAR(256) NOT NULL,
+        flavor_names VARCHAR(50)[] NOT NULL,
+        flavor_counts INTEGER[] NOT NULL,
+        flavor_counts_normalized INTEGER[] NOT NULL
     );
     CREATE TABLE users (
         id SERIAL PRIMARY KEY,

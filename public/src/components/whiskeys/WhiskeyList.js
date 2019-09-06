@@ -5,22 +5,18 @@ import { SortPaginate } from '../app/SortPaginate.js';
 class WhiskeyList extends Component {
     onRender(dom) {
         const whiskeys = this.props.whiskeys;
+        const flavorCategories = this.props.flavorCategories;
 
         const sortPaginateBar = new SortPaginate({ sort: this.props.sort || '' });
         dom.prepend(sortPaginateBar.renderDOM());
 
         const listArea = dom.querySelector('.whiskey-container');
-        // const favorites = getFavorites();
         whiskeys.forEach(whiskey => {
             const props = { 
                 whiskey: whiskey, 
+                flavorCategories: flavorCategories,
                 removedFavorite: this.props.removedFavorite
             };
-            // favorites.forEach(favorite => {
-            //     if(whiskey.id === favorite.whiskey_id) {
-            //         whiskey.isFavorite = true;
-            //     }    
-            // });
             const whiskeyItem = new WhiskeyItem(props);
             const whiskeyItemDOM = whiskeyItem.renderDOM();
             listArea.appendChild(whiskeyItemDOM);
@@ -29,8 +25,8 @@ class WhiskeyList extends Component {
 
     renderHTML() {
         return /*html*/`
-            <div>
-                <ul class="whiskey-container"></ul>
+            <div class="whiskey-top-level">
+                <ul class="whiskey-container my-bottles"></ul>
             </div>
         `;
     }
