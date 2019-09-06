@@ -1,13 +1,15 @@
 #sort-pane {
     height: auto;
     width: calc(100%-5px);
+    max-width: 900px;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
     align-items: center;
     background-color: #D2D5DD;
     border: 1px solid #A0A0A0;
-    margin: 5px;
+    margin: auto;
+    margin-bottom: 5px;
     overflow: contain;
 
 }

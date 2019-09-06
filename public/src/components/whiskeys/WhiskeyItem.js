@@ -42,6 +42,11 @@ class WhiskeyItem extends Component {
             });
 
             const flavorsChart = li.querySelector('canvas').getContext('2d');
+            const gradient = flavorsChart.createLinearGradient(20, 0, 220, 0);
+            gradient.addColorStop(0, '#f12711');
+            gradient.addColorStop(.7, '#f5af19');
+            // gradient.addColorStop(1, '#0F2027');
+
             // eslint-disable-next-line
             let chart = new Chart(flavorsChart, {
                 type: 'radar',
@@ -49,7 +54,9 @@ class WhiskeyItem extends Component {
                     labels: chartCategories,
                     datasets: [{
                         label: 'Flavor Profile',
-                        borderColor: 'rgba(152, 210, 235, 0.9)',
+                        backgroundColor: gradient,
+                        tension: .8,
+                        radius: 1,
                         borderWidth: 1,
                         data: chartMagnitudes,
                     }]
@@ -80,8 +87,8 @@ class WhiskeyItem extends Component {
         return /*html*/`
         <li class="whiskey-items">
             <div class="title-container">
+                <i class="material-icons favorite-star star ${starClass}">star</i>
                 <h2 class="whiskey-title">${whiskey.title}</h2>
-                <i class="material-icons favorite-star ${starClass}">star</i>
             </div>
             <div class="img-container">
                 <img class="list-img" src="${whiskey.detail_img_url}" alt=""/>

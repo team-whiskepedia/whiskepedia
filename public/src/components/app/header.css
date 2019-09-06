@@ -34,6 +34,10 @@
     text-decoration: none;
 }
 
+.user-message {
+    font-family: 'Rajdhani', sans-serif;
+    text-transform: capitalize;
+}
 
 .mobile-nav {
     display: flex;
@@ -74,6 +78,7 @@
     transition: all;
     transition-duration: 200ms;
     transition-timing-function: ease-in;
+    font-family: 'Rajdhani', sans-serif;
 }
 .mobile-nav li:hover, .mobile-nav li:active {
     background-color: #36393B;
@@ -95,6 +100,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    font-family: 'Rajdhani', sans-serif;
 }
 .desktop-nav li {
     padding-left: 5px;
