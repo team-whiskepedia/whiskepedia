@@ -70,23 +70,6 @@ export class About extends Component {
                             <a class="about-button" href="/browse.html">Browse</a>
                         </div>
                     </section>
-                    <h3>About the Flavor Profiles</h3>
-                    <section class="info">
-                        <p>
-                            Whiskepedia contains hundreds of bottles of whiskey, in various styles, 
-                            cataloged by their flavor profiles.
-                            <ul>
-                                <li>Search for your favorite whiskeys. </li>
-                                <li>Identify the flavors that work best for your palate.</li>
-                                <li>Explore new flavor profiles.</li>
-                                <li>Fine-tune the profile of your next drink.</li>
-                            </ul>
-                        </p>
-                        <div class="flex-img">
-                            <img src="assets/flavor-wheel.jpg" alt="whiskey flavor wheel graphic">
-                            <img src="assets/flavor-wheel-2.gif" alt="whiskey flavor wheel graphic">
-                        </div>
-                    </section>
                 </main>
             </div>
         `;
