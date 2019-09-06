@@ -68,7 +68,9 @@ class WhiskeyItem extends Component {
 
         }
 
-        createChart(flavorCategories, whiskey);        
+        if(flavorCategories) {
+            createChart(flavorCategories, whiskey);        
+        }
     }
 
     renderHTML() {

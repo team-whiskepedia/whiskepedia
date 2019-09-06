@@ -15,7 +15,7 @@ class WhiskeyListApp extends Component {
         
         const searchContainer = new SearchContainer({ flavors: [] });
         main.appendChild(searchContainer.renderDOM());
-        const list = new WhiskeyList({ whiskeys: [], flavors: [] });
+        const list = new WhiskeyList({ whiskeys: [], flavorCategories: [] });
         main.appendChild(list.renderDOM());
 
         getFlavors()

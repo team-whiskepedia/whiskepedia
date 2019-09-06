@@ -133,7 +133,22 @@ app.get('/api/me/favorites', (req, res) => {
         SELECT  f.whiskey_id,
                 f.user_id,
                 f.is_favorite as "isFavorite",
-                w.*
+                w.id,
+                w.title,
+                w.list_img_url,
+                w.detail_img_url,
+                w.region,
+                w.rating,
+                w.price,
+                w.flavor_names AS "flavorNames",
+                w.flavor_counts AS "flavorCounts",
+                w.flavor_counts_normalized AS "flavorCountsNormalized",
+                w.flavor_1,
+                w.flavor_2,
+                w.flavor_3,
+                w.flavor_4,
+                w.flavor_5,			
+                w.description
         FROM favorites f
         JOIN whiskeys w
         ON f.whiskey_id = w.id
