@@ -24,7 +24,7 @@
     padding-left: 10px;
     padding-top: 10px;
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Abel', sans-serif;
     font-size: 1.5em;
     color: #A0A0A0;
     background-color: #0F0D00;
@@ -98,6 +98,7 @@
     padding: 5%;
     font-weight: bold;
     line-height: 1.3em;
+    font-size: 1.2em;
 }
 .info ul {
     list-style-type: disc;

@@ -3,9 +3,11 @@
 
 .whiskey-title {
     font-size: 2em;
-    text-align: center;
     font-family: 'Tulpen One', cursive;
     letter-spacing: .08em;
+    text-align: center;
+    position: absolute;
+    left: 50%;
 }
 
 .whiskey-details {
@@ -21,19 +23,20 @@
 
 .details {
     max-width: 80%;
-    font-size: .8em;
+    font-size: 1.1em;
+    margin-top: 10px;
 }
 
 .title-container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative; top: 0px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
     background-color: #0F0D00;
     width: 100%;
     height: 20%;
     color: #A0A0A0;
-    margin-bottom: 15px;
+    margin: auto;
 }
 
 canvas {
@@ -42,8 +45,9 @@ canvas {
 }
 
 .chart-container {
-    width: 500px;
-    height: 500px;
+    margin-top: 10px;
+    width: 400px;
+    height: 600px;
 }
 
 .whiskey-items { 
@@ -52,7 +56,7 @@ canvas {
     flex-direction: column;
     align-items: left;
     list-style: none;
-    height: 280px;
+    height: 300px;
     width: 100%;
     background-color: #E8EBE4;
     border: 1px solid #A0A0A0;
@@ -60,17 +64,26 @@ canvas {
 }
 
 .img-container {
-    height: 60%;
+    height: 100%;
     display: flex;
 }
 
 img {
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     padding-right:10px;
-    padding-left:10px;
 }
 
+
 .is-favorite {
-    color: yellow;
+    color: #F0AA1E;
+    flex: 0 1 auto;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.star {
+    flex: 0 1 auto;
+    margin-left: 10px;
+    cursor: pointer;
 }
