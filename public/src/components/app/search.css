@@ -21,6 +21,9 @@
 
 }
 
+/* I learned a lot about Collapsible Menus from the following resources:
+    https://www.w3schools.com/CSS/tryit.asp?filename=trycss_dropdown_button
+    https://semantic-ui.com/modules/dropdown.html */
 .collapsible-menu {
     overflow: hidden;
     position: relative;
