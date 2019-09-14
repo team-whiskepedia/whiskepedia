@@ -53,3 +53,6 @@ Clearly defined database schemas
   - Details component
   - Comparables container
     - Comparable item component
+
+
+// initial commit
