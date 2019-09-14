@@ -12,10 +12,10 @@ export class SearchCategory extends Component {
                 .split(',')
                 .forEach(id => {
                     const flavorRadio = dom.querySelector(`#${id}`);
-                    if(flavorRadio) {
-                        flavorRadio.checked = true;
-                        collapsibleMenuCheckbox.checked = true;
-                    }
+                    if(!flavorRadio) return;
+                   
+                    flavorRadio.checked = true;
+                    collapsibleMenuCheckbox.checked = true;
                 });
         }
     }
@@ -28,15 +28,16 @@ export class SearchCategory extends Component {
             <label for="filter-by-${categoryName}-container"><i class="material-icons rotatable">details</i><span> By ${categoryDisplayName}</span></label>
         `;
 
-        const flavorFiltersHTML = this.props.category.flavors.reduce((htmlString, flavor) => {
-            return htmlString += /*html*/ `
-                <li>
-                    <input type="radio" class="radio-input yes" value="y${flavor}" name="radio-${flavor}" id="yes-${flavor}"/><label for="yes-${flavor}"><span>Y</span></label>
-                    <input type="radio" class="radio-input" value="0" name="radio-${flavor}" id="${flavor}"/><label for="${flavor}"> ${flavor} </label>
-                    <input type="radio" class="radio-input no" value="n${flavor}" name="radio-${flavor}"  id="no-${flavor}"/><label for="no-${flavor}"><span>N</span></label>
-                </li>
-            `;
-        }, ``);
+        const flavorFiltersHTML = this.props.category.flavors
+            .map(flavor => {
+                return /*html*/ `
+                    <li>
+                        <input type="radio" class="radio-input yes" value="y${flavor}" name="radio-${flavor}" id="yes-${flavor}"/><label for="yes-${flavor}"><span>Y</span></label>
+                        <input type="radio" class="radio-input" value="0" name="radio-${flavor}" id="${flavor}"/><label for="${flavor}"> ${flavor} </label>
+                        <input type="radio" class="radio-input no" value="n${flavor}" name="radio-${flavor}"  id="no-${flavor}"/><label for="no-${flavor}"><span>N</span></label>
+                    </li>
+                `;
+            }).join('');
 
         return /*html*/ `
             <div class="collapsible-menu">
