@@ -83,7 +83,7 @@ app.get('/api/whiskeys', getUser, (req, res) => {
             COALESCE(f.is_favorite, FALSE) as "isFavorite",
             description
         FROM whiskeys w
-    		LEFT JOIN (
+    	LEFT JOIN (
             SELECT whiskey_id, is_favorite
             FROM favorites
             WHERE user_id = $2
@@ -111,7 +111,7 @@ app.get('/api/flavors', (req, res) => {
             name,
             category,
             broad_category AS "broadCategory"
-            FROM flavors;
+        FROM flavors;
             `)
         .then(result => {
             res.json(result.rows);
@@ -164,6 +164,7 @@ app.get('/api/me/favorites', (req, res) => {
             });
         });
 });
+
 app.post('/api/me/favorites', (req, res) => {
     const drink = req.body;
     client.query(`
@@ -184,7 +185,6 @@ app.post('/api/me/favorites', (req, res) => {
 });
 
 app.delete('/api/me/favorites/:id', (req, res) => {
-    console.log(req.params.id);
     client.query(`
         DELETE FROM favorites
         WHERE whiskey_id = $1

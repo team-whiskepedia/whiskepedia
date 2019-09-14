@@ -21,6 +21,7 @@ class WhiskeyListApp extends Component {
         getFlavors()
             .then(flavors => {
                 searchContainer.update({ flavors });
+                // And here is that same code repeated a third time
                 const categoriesList = flavors.reduce((categories, flavor) => {
                     const existingIndex = categories.findIndex((item) => item.category === flavor.category);
                     if(existingIndex >= 0) {
@@ -46,6 +47,7 @@ class WhiskeyListApp extends Component {
         }
 
         loadWhiskeys();
+        
         window.addEventListener('hashchange', () => {
             loadWhiskeys();
             searchContainer.update();

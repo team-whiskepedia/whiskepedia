@@ -2,22 +2,15 @@ const superagent = require('superagent');
 const client = require('../lib/client');
 
 const URL = 'https://evening-citadel-85778.herokuapp.com:443/shoot/';
-let whiskeys = [];
-async function getAllWhiskeys() {
-    for(let pageNumber = 1; pageNumber <= 32; pageNumber++) {
-        
-        const url = `${URL}?page=${pageNumber}`;
-        
-        whiskeys = await superagent
-            .get(url)
-            .then(res => res.body.results)
-            .then(page => {
-                console.log('saving page ', pageNumber, 'of 32');
-                return whiskeys = [...whiskeys, ...page];
-            });
-    }
-    return whiskeys;
+function getAllWhiskeys() {
+    // this is written sequential, use parallel!
+    return Promise.all(Array(32).fill(0).map((ignore, i) => {
+        return superagent
+            .get(`${URL}?page=${i + 1}`)
+            .then(res => res.body.results);
+    })).flat();
 }
+
 getAllWhiskeys()
     .then(whiskeys => {
         Promise.all(

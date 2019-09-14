@@ -1,6 +1,8 @@
 import Component from '../Component.js';
 import { Header } from './Header.js';
 
+// make about us data-driven! :)
+
 export class About extends Component {
 
     onRender(dom) {

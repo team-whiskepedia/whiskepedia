@@ -5,6 +5,7 @@ import hashStorage from '../../services/hash-storage.js';
 export class SearchContainer extends Component {
 
     onRender(dom) {
+        // duplicate logic from FavoritesApp, put into own module!
         const flavorsByBroadCategory = this.props.flavors.reduce((broadCategories, flavor) => {
             const existingIndex = broadCategories.findIndex((item) => item.category === flavor.broadCategory);
             if(existingIndex >= 0) {

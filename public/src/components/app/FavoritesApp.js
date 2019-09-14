@@ -11,11 +11,16 @@ class FavoritesApp extends Component {
         dom.prepend(header.renderDOM());
 
         const main = dom.querySelector('main');
-        const whiskeyList = new WhiskeyList({ whiskeys: [], flavorCategories: [], removedFavorite: true });
+        const whiskeyList = new WhiskeyList({ 
+            whiskeys: [], 
+            flavorCategories: [], 
+            removedFavorite: true 
+        });
         main.appendChild(whiskeyList.renderDOM());
 
         getFlavors()
             .then(flavors => {
+                // server should do this work!
                 const categoriesList = flavors.reduce((categories, flavor) => {
                     const existingIndex = categories.findIndex((item) => item.category === flavor.category);
                     if(existingIndex >= 0) {
@@ -26,6 +31,7 @@ class FavoritesApp extends Component {
                     }
                     return categories;
                 }, []);
+                
                 whiskeyList.update({ flavorCategories: categoriesList });
             });
 

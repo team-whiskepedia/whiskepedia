@@ -7,8 +7,7 @@ Promise.all(
             INSERT INTO flavors (name, category, broad_category)
             VALUES ($1, $2, $3);
         `,
-        [flavor.name, flavor.category, flavor.broadCategory])
-            .then(result => result.rows[0]);
+        [flavor.name, flavor.category, flavor.broadCategory]);
     })
 )
     .then(

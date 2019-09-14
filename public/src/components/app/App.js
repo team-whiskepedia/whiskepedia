@@ -10,7 +10,6 @@ export class App extends Component {
 
     }
 
-
     renderHTML() {
         return /*html*/`
             <div>
